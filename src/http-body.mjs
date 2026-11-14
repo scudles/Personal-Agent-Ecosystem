@@ -1,0 +1,1 @@
+export async function readJson(req,limit=128000){const chunks=[];let size=0;for await(const chunk of req){const b=Buffer.isBuffer(chunk)?chunk:Buffer.from(chunk);size+=b.length;if(size>limit)throw Error('payload_too_large');chunks.push(b);}const all=Buffer.concat(chunks).toString('utf8');return all?JSON.parse(all):{};}

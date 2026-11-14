@@ -1,0 +1,29 @@
+{
+  "format": "TRB_CLIENT_PENDING_CANDIDATE_V2",
+  "at": "2026-11-12T23:18:35.394Z",
+  "owner": "/root",
+  "previous": "CANDIDATE.json",
+  "fixedIssues": [
+    "P1-CLIENT-PENDING-001",
+    "P1-CLIENT-PENDING-002"
+  ],
+  "sourceHashes": {
+    "desktop/WorkbenchApp.cs": "c4a957ad777dd6d02bc0f9d1a431b65fff91d6a3632d1ee11d1d6a9b65f34676",
+    "desktop/DraftStore.cs": "6b9c370b8b1ebf0784c307fe78bfe8a7eeed9dc1724c2a201a29a874f99d4a7e",
+    "tools/client-pending-001/ClientPendingHarness.cs": "d34de8a4eded6f4848224024b1c26b7570582d8c4c8adcb434368b80d91622cc",
+    "tools/client-pending-001/verify-client-pending.mjs": "4d58e39fffc62bac1657325fb6c99f63e861aa998f952d61b0f9a96db92fbca4"
+  },
+  "tests": {
+    "passed": 10,
+    "failed": 0,
+    "exitCode": 0,
+    "evidence": "test-output/client-pending-001-fake-ST9F0p/result.json",
+    "evidenceSha256": "6aff8aa68110558c76912d9a6d58cea315155c1929ee17a3702ff080b9d3da10"
+  },
+  "independentSecondReview": "PASS_LIMITED_TWO_ORIGINAL_P1",
+  "realAgentOperations": 0,
+  "oldExecutableUnchanged": true,
+  "nativeIntegrationEvidence": "evidence/client-pending-001/native-integration.json",
+  "nativeIntegrationPassed": true,
+  "nativeIntegrationRealAgentOperations": 0
+}

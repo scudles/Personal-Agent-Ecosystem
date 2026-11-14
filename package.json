@@ -1,0 +1,12 @@
+{
+  "name": "tri-review-bridge",
+  "version": "1.0.0-preview",
+  "private": true,
+  "type": "module",
+  "description": "Windows WPF multi-project native-agent coordination workbench; simulation-only delivery gate",
+  "scripts": {
+    "test": ".\\runtime\\node.exe --test test/*.test.mjs",
+    "start": ".\\runtime\\node.exe src/workbench-server.mjs",
+    "desktop": "powershell.exe -NoProfile -File scripts/open-desktop.ps1"
+  }
+}

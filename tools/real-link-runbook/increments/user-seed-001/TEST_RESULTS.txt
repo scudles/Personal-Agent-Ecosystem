@@ -1,0 +1,28 @@
+✔ uninitialized never manufactures zero history, explicit cap is <=30 (52.0775ms)
+✔ incomplete history, unresolved main pause and nonoriginal binding fail closed (77.9047ms)
+✔ lower cap shares actual/native/manual budget; wrong original Session refused (60.7092ms)
+✔ duplicate attempts and request keys never receive a new submit grant (61.8939ms)
+✔ RESERVED/POSSIBLE/UNKNOWN hold after three hours and across restart (192.1817ms)
+✔ known terminals leave rolling count after an hour, never leave idempotency history (87.6234ms)
+✔ UNKNOWN reconciles only to known submission; only unbegun reservations cancel (116.0358ms)
+✔ pause blocks begin/reserve, permits stop accounting and persists on restart (77.7517ms)
+✔ explicit history imports count actual traffic and never double count or rewrite (85.3622ms)
+✔ future timestamps, stale complete baselines and body fields are refused (36.6915ms)
+✔ six competing processes preserve cap and snapshot without lost writes (368.8884ms)
+✔ two processes racing begin receive exactly one local submit grant (237.4015ms)
+✔ stale lock cannot auto-reclaim; corrupted state fails closed (22.925ms)
+✔ file-only CLI imports fake metadata; REAL directory override denied (430.1113ms)
+✔ late actual history exceeding cap blocks even a previously reserved begin (129.0977ms)
+✔ USER_SEED reaches only the three original Agent bindings with a null user fingerprint (122.8114ms)
+✔ USER_SEED requires its kind/null origin and refuses user targets, unknown targets and fake bindings (102.8737ms)
+✔ legacy Agent transfers retain both strict fingerprints and read-only snapshot compatibility (56.7205ms)
+✔ USER_SEED shares Agent quota and preserves once-only/UNKNOWN/pause after restart (120.3982ms)
+✔ imported RESERVED metadata cannot be used as a user-seed begin bypass (31.6169ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2583.3789

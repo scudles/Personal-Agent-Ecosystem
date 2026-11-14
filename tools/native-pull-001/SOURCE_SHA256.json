@@ -1,0 +1,54 @@
+{
+  "scope": "LOCAL_CANARY_CANDIDATE_IMPLEMENTER_SELF_TEST",
+  "createdAt": "2026-11-12T23:49:15.1323718Z",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "5b8ff89754b728e3d0a95905c3277ee999b8691fc4548a894724954a00e9f4ca"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "67aeadccdf27b45639479f420927fd24938e6f03228bf10c7ced85494042d4e8"
+    },
+    {
+      "path": "probe.mjs",
+      "sha256": "78583bb5acbe170d8e972adf0a30a6b2dc1d1bc842bc823d6fa879c19067fea3"
+    },
+    {
+      "path": "store.mjs",
+      "sha256": "efd2a3ea78a1d7ad353e5e0b9085a47b9228353a0903568918aad31f312b0596"
+    },
+    {
+      "path": "server.mjs",
+      "sha256": "a03fa6ba01b173c0fa121f9df1b0abe91ac771f2149b0c165001fbc33631000d"
+    },
+    {
+      "path": "test.mjs",
+      "sha256": "2c51cd96dc07af5e5161e0b5c49187f20d3c6d98787d2758304749a0b013f1d2"
+    },
+    {
+      "path": "plugin.json",
+      "sha256": "da4694751a8119e172aa077dc827c9c2bc7f2baa8ca444571a0ca4b98c77ba57"
+    },
+    {
+      "path": "mcp.json",
+      "sha256": "d3ca66bfa5b53e7fb09ae45ee699e18084bd8109e04bd6353c86ff931c74bd11"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6af4ea32056e48fe00e9296ca2512a8082dd0127844a2221d91bba523761ddf9"
+    },
+    {
+      "path": "test-report.json",
+      "sha256": "3b5605315a46b2c9c470431997fb7ef4dba47a3d5aa6f19d7434c3831349c309"
+    },
+    {
+      "path": "npm-user-empty.conf",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "npm-global-empty.conf",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    }
+  ]
+}

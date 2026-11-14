@@ -1,0 +1,10 @@
+{
+  "format": "TRB_SEALED_BATCH_BUDGET_AUTHORIZATION_V1",
+  "runId": "trb-real-links-20261112-001",
+  "budgetMode": "SEALED_BATCH_ONLY",
+  "manifestIdentitySha256": "2afe957c338f3c1adaf4374fb8b993df29443d14ea43ac64216ad543b8c7d957",
+  "audited": false,
+  "userInstruction": "额度不设上限",
+  "provenance": "OPERATOR_ASSERTION",
+  "reference": "FILL_REAL_USER_AUTHORIZATION_REFERENCE_BEFORE_ROOT_APPLY"
+}

@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-12T23:33:04.8654203Z",
+  "reviewer": "/root/pending_rev2_review",
+  "type": "INDEPENDENT_READ_ONLY_SECOND_REVIEW",
+  "result": "PASS",
+  "scope": [
+    "P1-CLIENT-PENDING-001",
+    "P1-CLIENT-PENDING-002"
+  ],
+  "remainingP0": 0,
+  "remainingP1": 0,
+  "sourceAndEvidenceHashesMatched": true,
+  "reviewerReranTests": false,
+  "implementerFakeTests": 10,
+  "realAgentOperations": 0,
+  "summary": "Exact preview identity is checked before replay and consumption; exclusive scope send lease covers HTTP and durable result; durable attempt count prevents stale creator rejection."
+}

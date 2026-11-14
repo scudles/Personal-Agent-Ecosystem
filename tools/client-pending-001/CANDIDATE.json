@@ -1,0 +1,62 @@
+{
+  "format": "TRB_CLIENT_PENDING_CANDIDATE_V1",
+  "at": "2026-11-12T18:44:45.967Z",
+  "owner": "/root/ux_layout",
+  "rootOwner": "/root",
+  "state": "FROZEN_FOR_FIRST_REQUIRED_READ_ONLY_REVIEW",
+  "sourceHashes": {
+    "desktop/WorkbenchApp.cs": "3f81b29672cb3ac00acb0c2009f46cf62b5a77a832d26c0261e0c84482724b12",
+    "desktop/DraftStore.cs": "ed6e677e0cda376d1f98a08f86d7bcf9d8121fbe8e28e9de9b33c081fb102c84",
+    "tools/client-pending-001/ClientPendingHarness.cs": "bc5b1ec46148ed671c08de69fb61e8ac6e9e4ea569127df7b6b53111063f65c8",
+    "tools/client-pending-001/verify-client-pending.mjs": "017d8e02fe7eff780a9964e9ec3e5a7484ca22ecd11976cd6c0bd44194f5a239",
+    "tools/client-pending-001/README.md": "94fe03e30ae89014480c6b1f67c8e0637839005c851cea8e6eed5dc28cb545bb"
+  },
+  "baseline": {
+    "desktop/WorkbenchApp.cs": "93f574010dab131746ff88e83bcce58a1605a13f1971672e98df5d1ebd664380",
+    "desktop/DraftStore.cs": "47a5580683904aeb06e3242fe09746fe74957677ae0c06e157c1614c92abbea7",
+    "oldCollabExecutableHash": "871037d6e79227a90e6e8b0b2b2ecf79d38591763ddf3c39aafbcd9ef91f2532",
+    "oldCollabExecutableUnchanged": true
+  },
+  "tests": {
+    "command": "runtime/node.exe tools/client-pending-001/verify-client-pending.mjs",
+    "exitCode": 0,
+    "passed": 7,
+    "failed": 0,
+    "evidence": "D:\\TriReviewBridge\\test-output\\client-pending-001-fake-Vth5pW\\result.json",
+    "evidenceHash": "69ea6e763e64dc9c948244cef54a6b1bf30b147f4044dd85127fd3f3cf4a09ce",
+    "finalLogHash": "323603ef4801e6a2d6466bdee6932d9b5fbd518ccb184239704ed8d56a7d7a36",
+    "initialLogHash": "d5e8c3e69ff4dda3557a304a8f90b273758b07701bb0b0e91194c1553a92bdac",
+    "initialFailureFiles": [
+      {
+        "path": "D:\\TriReviewBridge\\test-output\\client-pending-001-fake-ihaC0m\\failure.json",
+        "sha256": "c637b3ef085c9ca53fdace76c9abfb52b6c612229177e7392255c29608ee58d0"
+      }
+    ],
+    "allDesktopSourcesCompiledIntoFakeHarness": true,
+    "separateProcessRecovery": true,
+    "wpfWindowStarted": false,
+    "fullSuiteOrSoakRun": false
+  },
+  "scope": {
+    "trackedPrimarySendEndpoints": [
+      "intent",
+      "chat",
+      "reply"
+    ],
+    "otherFallbackOperationsUnchanged": true,
+    "backendModeLauncherOrAdapterChanged": false,
+    "realAgentOperations": 0,
+    "mainDatabaseTouched": false,
+    "currentCollabExeOverwritten": false
+  },
+  "contract": {
+    "persistExactRequestBeforeHttp": true,
+    "persistAckBeforeUiConsumption": true,
+    "firstExplicit4xxRejectSeparatelyRecoverable": true,
+    "oldUncertainRequestNotClearedByLater4xx": true,
+    "editedDraftNotUsedForOldKey": true,
+    "nativeUnknownNeverRetriedByClient": true,
+    "newRequestStatusApiRequired": false
+  },
+  "independentReview": "PENDING"
+}

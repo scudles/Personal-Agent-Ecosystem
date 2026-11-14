@@ -1,0 +1,8 @@
+﻿$ErrorActionPreference='Stop'
+$platformRoot=Split-Path -Parent $PSScriptRoot
+[IO.Directory]::CreateDirectory((Join-Path $platformRoot 'data'))|Out-Null
+$configFile=Join-Path $platformRoot 'data\workbench-config.json'
+if(Test-Path -LiteralPath $configFile){$cfg=Get-Content -LiteralPath $configFile -Raw|ConvertFrom-Json;try{$health=Invoke-RestMethod -Uri ("http://127.0.0.1:{0}/health" -f $cfg.port) -Headers @{Authorization="Bearer $($cfg.token)"} -TimeoutSec 2;if($health.mode -eq 'SIMULATION_ONLY'){Write-Host '工作台后台已运行（仅模拟，真实接入禁用）。';exit 0}}catch{}}
+$p=Start-Process -FilePath (Join-Path $platformRoot 'runtime\node.exe') -ArgumentList @((Join-Path $platformRoot 'src\workbench-server.mjs')) -WorkingDirectory $platformRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $platformRoot 'data\workbench.stdout.log') -RedirectStandardError (Join-Path $platformRoot 'data\workbench.stderr.log') -PassThru
+for($n=0;$n -lt 100;$n++){Start-Sleep -Milliseconds 200;$p.Refresh();if($p.HasExited){throw '工作台后台启动失败。请查看 data\workbench.stderr.log；未操作任何原生会话。'};if(Test-Path -LiteralPath $configFile){$cfg=Get-Content -LiteralPath $configFile -Raw|ConvertFrom-Json;try{$health=Invoke-RestMethod -Uri ("http://127.0.0.1:{0}/health" -f $cfg.port) -Headers @{Authorization="Bearer $($cfg.token)"} -TimeoutSec 1;if($health.ready){Write-Host '工作台后台已就绪，仅允许模拟Adapter。';exit 0}}catch{}}}
+throw '工作台后台启动超时；未强制终止其他进程。'

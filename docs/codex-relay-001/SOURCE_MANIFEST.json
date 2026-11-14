@@ -1,0 +1,112 @@
+{
+  "profileId": "codex-relay-001",
+  "frozenAt": "2026-11-13T01:17:49.2560303Z",
+  "files": [
+    {
+      "path": "src/relay-core.mjs",
+      "sha256": "fc3590914ece571125b068d45cfff62191dd19a065573f62a3c4e20e0365e1db",
+      "bytes": 21957
+    },
+    {
+      "path": "src/relay-http.mjs",
+      "sha256": "fb2c7ee8d6a9d37a0dbb35c9fa46d44bd760a2c5228aa315ae35f849f98fdc38",
+      "bytes": 5495
+    },
+    {
+      "path": "src/relay-intent.mjs",
+      "sha256": "b35c41cffcd9257160060993846151cea81e78ebe3cc35544fba5240cf693b24",
+      "bytes": 3352
+    },
+    {
+      "path": "src/workbench-server.mjs",
+      "sha256": "ce84931c75461ada3820546e4a3f98fed1dbdc6abb6274cbbd603aab3a2a16be",
+      "bytes": 15344
+    },
+    {
+      "path": "test/codex-relay-001.test.mjs",
+      "sha256": "b08641647ce5a89a44761391680ee4798fcdd32cf61b6892dc07e657e736779b",
+      "bytes": 18517
+    },
+    {
+      "path": "tools/codex-relay-001/worker.mjs",
+      "sha256": "2416c4297bdaf7d897df7a070fb0e4b08f7cf58df7ac0c7b28ee5e561d962d87",
+      "bytes": 12820
+    },
+    {
+      "path": "tools/codex-relay-001/executor.js",
+      "sha256": "bd2e74e0b29383b446e053af5e3a5925878996aedf3fded6ecd350b19431315d",
+      "bytes": 7015
+    },
+    {
+      "path": "tools/codex-relay-001/test.mjs",
+      "sha256": "2c56a3d2dfec1a07e3694bda6472ebbda01f797316ad34db8f5f316fe4c2b3f0",
+      "bytes": 22280
+    },
+    {
+      "path": "desktop/RelayPresentation.cs",
+      "sha256": "ca760e2fa56cdb66f2a466b2e5087a065694fc9648785ea0b9f4829e08cdd284",
+      "bytes": 7502
+    },
+    {
+      "path": "desktop/WorkbenchApp.cs",
+      "sha256": "82e693b0b1fa205302792f95fbfba39e2990c0738a33c9739fc7edaa7330ce99",
+      "bytes": 57889
+    },
+    {
+      "path": "desktop/UxPresentation.cs",
+      "sha256": "5bd9c9c1f760af5108f46872a4c2ac8f15f854ddbf5b8b33e7043f1253d22d6d",
+      "bytes": 27969
+    },
+    {
+      "path": "desktop/UxTheme.cs",
+      "sha256": "55bd816442f32f9027ee5c08cfa6a89ed539c1a39304c502239411259ec4b3bc",
+      "bytes": 8739
+    },
+    {
+      "path": "desktop/DraftStore.cs",
+      "sha256": "eb8622fa3bc94c13013365e874024c806abab9de46dc196edea34b39d8ce5cfb",
+      "bytes": 18738
+    },
+    {
+      "path": "desktop/UxWindow.xaml",
+      "sha256": "7985bb7bf5b266faa3df1e4718e073e3150faaef06b821770a8fe2bd7d276e13",
+      "bytes": 30495
+    },
+    {
+      "path": "desktop/TriReviewBridge.csproj",
+      "sha256": "7728609fbf07dc2095308e2294f4ef109bfce0cd712cb358d9eddaf60dc39041",
+      "bytes": 1298
+    },
+    {
+      "path": "scripts/open-codex-relay-workbench.mjs",
+      "sha256": "2b3f59d2a455ea46e6296783af16dc6c7a1b342782d84112c242889cf25cf696",
+      "bytes": 6950
+    },
+    {
+      "path": "scripts/open-codex-relay-workbench.ps1",
+      "sha256": "2d1542392b567b1470761ca78b1f101ed5aa30d56ed24dfa8197277e98815fdc",
+      "bytes": 529
+    },
+    {
+      "path": "scripts/build-codex-relay-desktop.ps1",
+      "sha256": "41f9923a015250975033a822720dff0aa74f5e8bef0e2431bdeef4730ba16830",
+      "bytes": 991
+    },
+    {
+      "path": "打开ChatGPT接力工作台.cmd",
+      "sha256": "8d78f12498e1ee93ef1bae0a74f41faf68af7a27b65f5e38b22f37c8b06c3e7d",
+      "bytes": 140
+    },
+    {
+      "path": "runtime/codex-relay-001/TriReviewBridge.UX.Collab.exe",
+      "sha256": "b75573c3b028004deba9b7229def760642bd2cd0c254f52e49cd6cf48949d0ef",
+      "bytes": 274432
+    },
+    {
+      "path": "evidence/codex-relay-001/plain-rpc-final-tests.txt",
+      "sha256": "8f18925658b2fb867331290044fdd000ca5c2d5f3145d63f6af52817d6f80e5e",
+      "bytes": 2071
+    }
+  ],
+  "excludes": "No credentials, native private histories, Nagi files, or runtime databases included."
+}

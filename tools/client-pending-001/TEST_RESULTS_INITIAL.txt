@@ -1,0 +1,21 @@
+node:internal/modules/run_main:111
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '�鹹���߲ݸ�'
+- '虚构断线草稿'
+
+    at file:///D:/TriReviewBridge/tools/client-pending-001/verify-client-pending.mjs:20:202
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '�鹹���߲ݸ�',
+  expected: '虚构断线草稿',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.12.1

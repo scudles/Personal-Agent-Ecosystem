@@ -1,0 +1,4 @@
+虚构果园记录：A2 有 17 个梨；C4 有 29 个李子。
+校验标记：625ad9358b13c6e489e14e35
+Trailing spaces are intentional:
+Last line: END-CANARY

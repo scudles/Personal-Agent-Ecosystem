@@ -1,0 +1,1 @@
+{"eventId":"521af015-1158-4588-981b-e43af5616742","at":"2026-11-12T03:06:13.011Z","type":"governance.reminder","simulation":true,"version":"MAG-001","projectId":"fictional-governance-project","taskId":"MAG-EXAMPLE-REMINDER-001","code":"FORCED_COMMITTEE","request":"虚构测试：要求所有任务默认进行三方审查","rule":"MAG 二 / 四","impact":"所有任务三方化会增加等待与重复审查。","alternative":"按L0-L3选择必要人数，第三方仅按条件介入。"}

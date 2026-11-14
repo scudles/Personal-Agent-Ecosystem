@@ -1,0 +1,44 @@
+TRB FICTIONAL CANARY - DERIVED READABLE VIEW
+Package: d63d404e-1861-4aec-ab1f-277c63b3ecff
+Version: 1
+Snapshot: 1f7a3f49-8190-4650-a586-ff4706e17b8d
+Manifest SHA256 (expected, not receiver-measured): 509a8e93d122b5ea596ee547dc8a7dccb8445f02e330aa9aa65e2318f29cbf7c
+Payload files: 3; original delivery files including controls: 5.
+This readable view is not proof that original file bytes were received.
+
+===== BEGIN notes.txt =====
+虚构果园记录：A2 有 17 个梨；C4 有 29 个李子。
+校验标记：625ad9358b13c6e489e14e35
+Trailing spaces are intentional:  
+Last line: END-CANARY
+===== END notes.txt =====
+
+===== BEGIN orchard.json =====
+{
+  "fictional": true,
+  "orchard": "Glass Lantern Orchard",
+  "rows": [
+    {
+      "plot": "A2",
+      "fruit": "pear",
+      "count": 17
+    },
+    {
+      "plot": "C4",
+      "fruit": "plum",
+      "count": 29
+    }
+  ],
+  "total": 46,
+  "marker": "625ad9358b13c6e489e14e35"
+}
+===== END orchard.json =====
+
+===== BEGIN README.txt =====
+Fictional material canary.
+This directory contains only invented orchard facts.
+Read-only byte verification only; no project implementation or broader filesystem permission.
+===== END README.txt =====
+
+===== EXPECTED MANIFEST =====
+{"createdAt":"2026-11-12T11:57:07.058Z","fictional":true,"files":[{"bom":false,"encoding":"UTF-8","lineEndings":"LF","path":"notes.txt","sha256":"93ba3bee995344faef94906ce9a8dab8b312d020605d8cbe66c6c3e1897f9bc8","sizeBytes":160},{"bom":false,"encoding":"UTF-8","lineEndings":"LF","path":"orchard.json","sha256":"b9d3a2d7f5779246dc286d13e380e953c6649bdae85f7a6ad118de7d9e877528","sizeBytes":281},{"bom":false,"encoding":"UTF-8","lineEndings":"LF","path":"README.txt","sha256":"87a757e5019fd9e6b7b0f9f2fe1fa0b0f0544e8086deab7b7c49bbe1e907d889","sizeBytes":174}],"format":"TRB_REAL_MATERIAL_CANARY_V1","packageId":"d63d404e-1861-4aec-ab1f-277c63b3ecff","payloadBytes":615,"payloadFileCount":3,"snapshotId":"1f7a3f49-8190-4650-a586-ff4706e17b8d","version":1}

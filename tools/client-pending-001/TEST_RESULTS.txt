@@ -1,0 +1,13 @@
+PASS restart reuses exact key/path/payload after a committed response is lost; native UNKNOWN unchanged
+PASS ACK persists across a second restart and is consumed locally only after draft save
+PASS a normally acknowledged next identical message gets a new logical request key
+PASS Workspace B completes independently while Workspace A keeps its pending key and draft
+PASS edited body/recipient conflicts never reach HTTP; old exact request recovers while edited draft survives
+PASS first explicit business rejection is viewable/finishable with draft retained rather than permanently blocking edits
+PASS a denial while recovering an uncertain request cannot erase earlier possible submission
+{
+  "passed": 7,
+  "failed": 0,
+  "evidence": "D:\\TriReviewBridge\\test-output\\client-pending-001-fake-Vth5pW\\result.json",
+  "realAgentOperations": 0
+}

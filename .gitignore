@@ -1,0 +1,38 @@
+# 只把代码、文档与脚本纳入版本控制。
+#
+# 这个项目有 1.1 GB 的历史材料。全部塞进 Git 会让仓库变成几个 G，之后每次
+# clone / status / grep 都慢到不能用，而且这些字节（候选副本、既有证据、
+# 运行数据）本来就有自己的目录与备份，不需要 Git 再存一份。
+#
+# 数字来自 2026-11-14 的实测：candidates 1037 MB / 37736 文件、backups 251 MB、
+# runtime 104 MB、evidence 39 MB、data 31 MB、artifacts 17 MB、exports 10 MB。
+
+# 历史材料：体积大，已有独立备份
+candidates/
+backups/
+evidence/
+artifacts/
+exports/
+
+# 运行数据与凭据：绝不能进仓库
+data/
+sandbox/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+.env
+*.env
+token*.txt
+
+# 自带运行时（105 MB 二进制，可重新获取）
+runtime/
+
+# 测试产物：路径深到超过 Windows MAX_PATH，Git 直接 index 失败（实测）
+test-output/
+
+# 常规
+node_modules/
+dist/
+*.log
+Thumbs.db
+.DS_Store

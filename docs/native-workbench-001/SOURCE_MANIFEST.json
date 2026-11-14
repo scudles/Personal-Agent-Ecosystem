@@ -1,0 +1,243 @@
+{
+  "files": [
+    {
+      "path": "打开三方协作候选.cmd",
+      "sha256": "f271d6cd080c57036e469b12659c156bf49bd133f8106f2cf61a8848cd189bcd"
+    },
+    {
+      "path": "desktop/DraftStore.cs",
+      "sha256": "46fa31ff8ce684b5c01aa25c313d230d8bc79acb8bff7537e91ca665639bbbd5"
+    },
+    {
+      "path": "desktop/HermesWatchConsent.cs",
+      "sha256": "439d3737a27fcf4f359493eabf81b1b00aee1162462cb205fc63e2c772058c07"
+    },
+    {
+      "path": "desktop/HybridHistory.cs",
+      "sha256": "d0c54464da5f9ddb70329b2425270d0feb91560d858b7bb8d1791458f3b0521b"
+    },
+    {
+      "path": "desktop/HybridPresentation.cs",
+      "sha256": "678404f25ced9af6408a63d750ad5b7ef8a989a6cf1d712f3418bfa816083b1a"
+    },
+    {
+      "path": "desktop/RelayPresentation.cs",
+      "sha256": "ec8a7a7b62bd3b3662ac5db0ef91ebec85f03f27786a11f984352c06d5d08516"
+    },
+    {
+      "path": "desktop/TriReviewBridge.csproj",
+      "sha256": "891b69dffb7d2ed5722e2360d14796c905c093e7cdc084e1fcf0aa938d4b41b4"
+    },
+    {
+      "path": "desktop/UxPresentation.cs",
+      "sha256": "e7480fca0cc8c49f7975604b5f31485daa29c99e289c78d5b77854f02481107c"
+    },
+    {
+      "path": "desktop/UxTheme.cs",
+      "sha256": "39928bb30da287ef050930e5a4979d785cbf499dca711125b79cf803769e3863"
+    },
+    {
+      "path": "desktop/UxWindow.xaml",
+      "sha256": "44fa4f11c8663a18313571afe6fa9a7c1763d9f40529d6f23dbb6fce24d924e4"
+    },
+    {
+      "path": "desktop/WorkbenchApp.cs",
+      "sha256": "100c3a7f4d51cde306cc3c681da445153c7ce1e0ae7de1a34531ff4b301f7ee8"
+    },
+    {
+      "path": "scripts/build-hybrid-native-desktop.ps1",
+      "sha256": "ea5e61b1ba77ed72b983707a7a662c37ec699b9f410d0486ff75e5ad92d9d5d1"
+    },
+    {
+      "path": "scripts/open-hybrid-native-workbench.mjs",
+      "sha256": "75ac469e46d43b111e100cdb595bb59c4894fe0d84e480858027004647879fb0"
+    },
+    {
+      "path": "scripts/open-hybrid-native-workbench.ps1",
+      "sha256": "8a809ee39d2b02aed1082e12d3fa1eae5551d72e49063b5d7e3d2fea3ad2703e"
+    },
+    {
+      "path": "src/adapter-capabilities.mjs",
+      "sha256": "a5b3a85a6ec65a99793001b2f471188f7440e5f99643c05e6673c2b2806c9f4c"
+    },
+    {
+      "path": "src/asar.mjs",
+      "sha256": "062b5208ddeaa0a83262fa4cb14e4e01ee9a31334a0ac1a86dccc09b60139d9f"
+    },
+    {
+      "path": "src/collaboration-core.mjs",
+      "sha256": "4d3f4cad2476536e8ba8d9f9f873a090c8f3a80da245bc3b0c27ea305ec91c22"
+    },
+    {
+      "path": "src/collaboration-governance.mjs",
+      "sha256": "bf87f7cedca8cad1ec3116c24a6bfdf9a3e9d103fe611c19ea1893370d5b64cb"
+    },
+    {
+      "path": "src/collaboration-intent.mjs",
+      "sha256": "f2c71f21f74d1c8191a6f8ad288bbbf53be6f70dbafa36b344048e590c4001f1"
+    },
+    {
+      "path": "src/collaboration-plan.mjs",
+      "sha256": "c8cccb6c046c639dfe11143fca979a12fa9c32652a4e473100bd495d2af06527"
+    },
+    {
+      "path": "src/collaboration-plans-host.mjs",
+      "sha256": "b5c1124dde0ff24c2c3e61c4456b545254b467ee8008abde5c9e2d11e0a3b51b"
+    },
+    {
+      "path": "src/config.mjs",
+      "sha256": "b387158830b85ed9790233189856cddcdc5ee6b3dadc8f1770564c4e3bc83fbd"
+    },
+    {
+      "path": "src/core.mjs",
+      "sha256": "ce7f7978a437c8ba616d8388f96cb15db7fe903b596ffb216a355f1a2ba0aa73"
+    },
+    {
+      "path": "src/dsh-observe.mjs",
+      "sha256": "c98218e6c1060f8caa065ec71a97a766b2d53f96ed50c01d1ad065673a11cc74"
+    },
+    {
+      "path": "src/http-body.mjs",
+      "sha256": "d8a70a4073db9a9290257e6b7dfcd50e03e0c0943e25a00db729448feec6bb29"
+    },
+    {
+      "path": "src/hybrid-core.mjs",
+      "sha256": "cb6006af1a421971a704f7e6f4cf29fcd35438050f79b9a01ecc32cec5a16e34"
+    },
+    {
+      "path": "src/hybrid-http.mjs",
+      "sha256": "ca364ca82654f2c9fc482693d81d2c6a2fe4822ac9c2559916dce1cf6a451bf7"
+    },
+    {
+      "path": "src/hybrid-intent.mjs",
+      "sha256": "87c1b332970e6b2d4a4a30392f2803e79c5b7da9127b3b57742b23b03e59eb3f"
+    },
+    {
+      "path": "src/relay-core.mjs",
+      "sha256": "fc3590914ece571125b068d45cfff62191dd19a065573f62a3c4e20e0365e1db"
+    },
+    {
+      "path": "src/relay-http.mjs",
+      "sha256": "fb2c7ee8d6a9d37a0dbb35c9fa46d44bd760a2c5228aa315ae35f849f98fdc38"
+    },
+    {
+      "path": "src/relay-intent.mjs",
+      "sha256": "b35c41cffcd9257160060993846151cea81e78ebe3cc35544fba5240cf693b24"
+    },
+    {
+      "path": "src/room.mjs",
+      "sha256": "d95b8f5280cc47fcd5ea717436f901252f7f3dbe00618b986d28b75d766b60cc"
+    },
+    {
+      "path": "src/server.mjs",
+      "sha256": "e245f6b1fe2e66b0d2f24227baee46df4cbfd14cd122d0f7e81ab3ab3092fe52"
+    },
+    {
+      "path": "src/simulation-adapter.mjs",
+      "sha256": "a2badf4393282a9bf9b0bee988503756de3d69bc1cca369834508b3225b0e9bc"
+    },
+    {
+      "path": "src/supervisor.mjs",
+      "sha256": "c8ec71cac844195fab4c043f87fd52df0bad5616a66cb7e1fb465f35a80e66ef"
+    },
+    {
+      "path": "src/transports.mjs",
+      "sha256": "7edf8881cbafd1af36a560f92f459a0dc490a7d41268b51395e82e3bfeabe71f"
+    },
+    {
+      "path": "src/workbench-server.mjs",
+      "sha256": "0f8c0d3d7b6a6939b1e3842ae4226e32910ed2c5b9628e646f2d6371516b449b"
+    },
+    {
+      "path": "src/workbench.mjs",
+      "sha256": "cd5adc384e058f0a0026845196e0a0560be4a3a9ae709c9bd5f0e23dd938de91"
+    },
+    {
+      "path": "src/workflow.mjs",
+      "sha256": "30c3bb3adfc4957946348585bb4b2c3b11bdc535042503c508eb3136bb119676"
+    },
+    {
+      "path": "test/hermes-watch-consent-harness.cs",
+      "sha256": "d208d41ca8c5e328e8273684d3005655fe9ba7e90524ddf0e6290c83faea89e5"
+    },
+    {
+      "path": "test/hermes-watch-consent.test.mjs",
+      "sha256": "9fe2b40b7154e3d250e63654190fb7038dfffcaeb90fd70f9e1eb19e2f283110"
+    },
+    {
+      "path": "test/hybrid-chatgpt-001.test.mjs",
+      "sha256": "f4c19cc16819dfa7cc9b111a4bd99454867ca035d8dd418c1fa2a08aa21ee5b7"
+    },
+    {
+      "path": "test/hybrid-chatgpt-http.test.mjs",
+      "sha256": "81aa043e4bc5d584e2fc7bca89fe32f1f96fab6026c902c72a1b708dde139a61"
+    },
+    {
+      "path": "test/hybrid-native-real-host-launcher.test.mjs",
+      "sha256": "8f7f431b1c8699eb3a6a53383fdb8549c84fcefb0213ea1e9c4cf73356782150"
+    },
+    {
+      "path": "test/hybrid-native-ui.test.mjs",
+      "sha256": "72cb5e78681836f7fc349a8db96fcf6c6257c830298be9a970ae8e3cea7c9f28"
+    },
+    {
+      "path": "test/message-history-001.test.mjs",
+      "sha256": "c0906af4ba45a2a081bf74334ca18faed75ef529ecd6d7ee5363aec6fc09f3ee"
+    },
+    {
+      "path": "tools/hybrid-native-001/chatgpt-executor.js",
+      "sha256": "d9d55b4fa0e90e8f0f8d913a827314ea7f3417ec02f3af1cf756f0ba19df489a"
+    },
+    {
+      "path": "tools/hybrid-native-001/chatgpt-rpc.mjs",
+      "sha256": "bdb37759b321bffb5c93620ade9a66e8bfd52361ba94d7562603449449f8bb30"
+    },
+    {
+      "path": "tools/hybrid-native-001/contract.mjs",
+      "sha256": "3da858d15e5de3726603ba3760f35196fe29a05b18713983d9e80f021c33b25e"
+    },
+    {
+      "path": "tools/hybrid-native-001/fake-worker-process.mjs",
+      "sha256": "714552fee7570741f264697db6decc3e7fa81e551ffe702c432384299a18c08d"
+    },
+    {
+      "path": "tools/hybrid-native-001/fixture-host.mjs",
+      "sha256": "ac6ad762f2e8977fe70cd79f37e2b2b687f5d2d1de317f8f0fb499043b65f5d8"
+    },
+    {
+      "path": "tools/hybrid-native-001/hermes_contract_test.py",
+      "sha256": "15723d5b7f5a3646074a538a1235c92fd18e5bc56b2cce40bbfbca85798a755c"
+    },
+    {
+      "path": "tools/hybrid-native-001/hermes_contract.py",
+      "sha256": "982e70e3e92bca0d8d183c3ce70d03c727da0e2c106316e143fbefa2e4ca17c5"
+    },
+    {
+      "path": "tools/hybrid-native-001/hermes-gateway.py",
+      "sha256": "dfd17ad847a9de9c852d3b927a09fbab018046e86508a886d74fa756280f9f33"
+    },
+    {
+      "path": "tools/hybrid-native-001/http.test.mjs",
+      "sha256": "2798f6a496ea58801be955c5e35e262a5bbe52124c35b518ccd03dae5c009f8f"
+    },
+    {
+      "path": "tools/hybrid-native-001/soak.mjs",
+      "sha256": "ea7717498f802fbc60d2d1a2fb1f16c168046bf810582e15ca5d52d916b0e87c"
+    },
+    {
+      "path": "tools/hybrid-native-001/worker.mjs",
+      "sha256": "8d5c0176c5495d85f53f3ee9f30b3d3821f83e6e358fe9174bf26adfdd7e90ce"
+    },
+    {
+      "path": "tools/hybrid-native-001/worker.test.mjs",
+      "sha256": "a6499bfc47e08b5d5d298288c6e23ee1e55a55efecb2d73af0ef8371a4a97e40"
+    }
+  ],
+  "canonicalExe": {
+    "sha256": "2c64e381d0e14a948b5e21618573f088707df3cc2e7e2950e1231a90633bce4e",
+    "path": "runtime/hybrid-native-001/TriReviewBridge.UX.Collab.exe"
+  },
+  "frozenAt": "2026-11-13T02:51:53.1898034Z",
+  "excludes": "No runtime credentials, databases, private native histories or Nagi files.",
+  "format": "TRB_NATIVE_WORKBENCH_SOURCE_V1"
+}

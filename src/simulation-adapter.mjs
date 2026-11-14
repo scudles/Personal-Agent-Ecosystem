@@ -1,0 +1,23 @@
+import {Supervisor}from'./supervisor.mjs';import{hash}from'./core.mjs';import{assert}from'./workbench.mjs';
+export class SimulationAdapter{
+ constructor(w){Object.defineProperty(this,'mode',{value:'SIMULATION_ONLY'});this.w=w;this.calls=[];}
+ async inspect(role,{context}={}){assert(context,'simulation_scope_required');const b=this.w.binding(context,role);assert(b?.kind==='simulated','real_adapter_hard_locked');const fault=this.w.get('sim_fault',b.id)?.mode||'none';if(['app_closed','gateway_down'].includes(fault))return{error:'simulation_'+fault,mutationStarted:false};return{sessionId:fault==='wrong_identity'?'invalid-session':b.sessionId,title:b.title,busy:fault==='human_typing',draft:fault==='existing_draft',editorReady:true,simulation:true};}
+ async send(role,d,baseline){const b=this.w.binding(d,role);assert(b?.kind==='simulated'&&b.id===d.bindingId,'real_adapter_hard_locked');const mode=this.w.get('sim_fault',b.id)?.mode||'none';this.calls.push({role,id:d.id,projectId:d.projectId,workspaceId:d.workspaceId,sessionId:d.sessionId});assert(!this.w.get('mock_submission',d.id),'simulation_duplicate_submission');this.w.put('mock_submission',d.id,{id:d.id,role,prompt:d.prompt,sessionId:b.sessionId,mode,at:new Date().toISOString()});if(mode==='focus_loss')return{error:'simulation_focus_loss',mutationStarted:true};if(mode==='submit_timeout')return{error:'simulation_submit_outcome_unknown',mutationStarted:true};return{submitted:true,simulation:true,admissionId:'mock:'+d.id};}
+ async read(role,d){const b=this.w.binding(d,role);assert(b?.kind==='simulated','real_adapter_hard_locked');const sent=this.w.get('mock_submission',d.id);if(!sent||sent.mode==='focus_loss')return{requestSeen:false,sessionId:b.sessionId};const mode=this.w.get('sim_fault',b.id)?.mode||'none';if(mode==='submit_timeout')return{requestSeen:false,sessionId:b.sessionId};if(mode==='reply_timeout')return{requestSeen:true,sourceUserId:'mock-user:'+d.id,sessionId:b.sessionId,completed:false};const i=this.w.get('case',d.caseId),common={case_id:i.id,revision:d.revision,artifact_hash:d.artifactHash,nonce:d.nonce};let value;
+ if(['review','cross_review'].includes(d.kind))value={type:'review',...common,verdict:mode==='review_changes'?'request_changes':mode==='review_reject'?'reject':mode==='review_abstain'?'abstain':'approve',conditions:mode==='review_changes'?['模拟：需要澄清虚构材料的审查范围']:[],reason:'[模拟 '+role+'] 已独立检查本版虚构文字与完整快照；此结果不是原生模型意见。'};
+ else if(d.kind==='revision')value={type:'revision',...common,body:i.body+'\n模拟修订：仅审查本材料文字。'};
+ else if(d.kind==='notice')value={type:'notice_ack',...common,comment:'[模拟 '+role+'] 已收到原事项的实际模拟结论。'};
+ else if(d.kind==='chat'||d.kind==='text_task')value='[模拟 '+role+'] '+(d.kind==='chat'?'已收到定向消息：':'文字任务结果：')+i.body+'\n本结果来自隔离模拟 Adapter，不是真实 Agent 回复。';
+ else value={type:'task_result',...common,result:'[模拟 '+role+'] 已整理各方独立意见，保留其条件与分歧；仅文字，不构成实施。'};
+ const reply=typeof value==='string'?value:JSON.stringify(value);
+ return{requestSeen:true,sessionId:b.sessionId,sourceUserId:'mock-user:'+d.id,promptText:d.prompt,replyId:'mock-reply:'+hash(d.id+reply),completed:true,noToolCalls:mode!=='unexpected_tool',reply,simulation:true,coverage:'SIMULATION_ONLY'};
+ }
+ async latestAction(){return null;}
+}
+export class WorkbenchSupervisor extends Supervisor{
+ constructor(w,adapter,options={}){assert(adapter?.mode==='SIMULATION_ONLY','simulation_adapter_required_no_real_fallback');super(w,adapter,options);this.running=new Map();}
+ async tick(){if(this.stopped)return;for(const p of this.w.navigation())for(const ws of p.workspaces){if(p.archived||ws.archived||ws.paused)continue;const ctx={projectId:p.id,workspaceId:ws.id};for(const member of this.w.participants(ctx)){if(member.kind!=='simulated'||member.paused)continue;const key=member.bindingId;if(this.running.has(key))continue;const promise=this.step(member.id,ctx).catch(e=>this.w.log('simulated_lane.error',{...ctx,role:member.id,error:e.message})).finally(()=>this.running.delete(key));this.running.set(key,promise);}}await Promise.allSettled([...this.running.values()]);}
+ async step(role,ctx){try{return await super.step(role,ctx);}catch(e){for(const d of this.w.list('delivery').filter(d=>d.role===role&&d.state==='leased'&&this.w.deliveryAllowed(d,ctx)))this.w.release(role,d.id,d.lease,e.message);this.w.log('simulated_preflight_rejected',{...ctx,role,error:e.message});}}
+ status(role,status,detail=''){this.w.heartbeat(role,{status,detail:'[模拟] '+detail.replaceAll('原会话','模拟会话'),transport:'SIMULATION_ONLY',pid:process.pid});}
+ async drain(){await Promise.allSettled([...this.running.values()]);}
+}

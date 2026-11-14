@@ -1,0 +1,88 @@
+{
+  "format": "TRB_SEALED_BATCH_BUDGET_CANDIDATE_V1",
+  "task": "TRB-REAL-LINK-SEALED-BATCH-001",
+  "owner": "Codexroot",
+  "at": "2026-11-12T17:29:43.805Z",
+  "state": "FROZEN_PENDING_INDEPENDENT_REVIEW",
+  "runId": "trb-real-links-20261112-001",
+  "manifestIdentitySha256": "2afe957c338f3c1adaf4374fb8b993df29443d14ea43ac64216ad543b8c7d957",
+  "tests": {
+    "command": "node --test tools/real-link-runbook/ledger.test.mjs tools/real-link-runbook/increments/sealed-batch-001/authorization.test.mjs",
+    "exitCode": 0,
+    "total": 32,
+    "pass": 32,
+    "fail": 0,
+    "existing": 20,
+    "increment": 12,
+    "durationMs": 6138.5809
+  },
+  "syntaxChecks": true,
+  "realLedgerAccess": "NOT_PERFORMED",
+  "realApply": "NOT_PERFORMED",
+  "realPlatformOperations": 0,
+  "files": [
+    {
+      "path": "tools/real-link-runbook/ledger.mjs",
+      "sha256": "eab1b24def1a30b8cff348df4559d61f5962ced0ed2a0141cde58ded99d4906b"
+    },
+    {
+      "path": "tools/real-link-runbook/sealed-batch.mjs",
+      "sha256": "4e24116dbad3ed408c202af8900288d5f37ae300ae6b49be808b12df0420bcfa"
+    },
+    {
+      "path": "tools/real-link-runbook/cli.mjs",
+      "sha256": "6ae0efadf9fb91c3e6cdf21907110333ec8efe3ee37a03fcab684903157b0e72"
+    },
+    {
+      "path": "tools/real-link-runbook/ledger.test.mjs",
+      "sha256": "3ed4a7e0ad547536b3b09505dcb07c9673a4b3686dd38bff3f0a14359a59a2e4"
+    },
+    {
+      "path": "tools/safe-local-files.mjs",
+      "sha256": "e7dde44d2032a97fdf3455c825871be6b662ec6013bb4ac0614b1b1e0ff37a3c"
+    },
+    {
+      "path": "tools/real-link-runbook/increments/sealed-batch-001/authorization.test.mjs",
+      "sha256": "aa031380245878b40a84501f87de97787e7c4c83a1b7e59d8319d0572c09e97e"
+    },
+    {
+      "path": "tools/real-link-runbook/increments/sealed-batch-001/manifest-identity.json",
+      "sha256": "2afe957c338f3c1adaf4374fb8b993df29443d14ea43ac64216ad543b8c7d957"
+    },
+    {
+      "path": "tools/real-link-runbook/increments/sealed-batch-001/REPORT.md",
+      "sha256": "68dd3245d7f7ebc915f33fab251ee5438958564cf3a611d5efaf355d959692a5"
+    },
+    {
+      "path": "tools/real-link-runbook/increments/sealed-batch-001/AUTHORIZATION_TEMPLATE.json",
+      "sha256": "37c0174eac7f311569bf6926a3528c2de998146ec44474c8003b0b6b60d4e882"
+    },
+    {
+      "path": "tools/real-link-runbook/increments/sealed-batch-001/TEST_RESULTS.txt",
+      "sha256": "ffcdff74760bd341985308529dcdf6b8b6ce2c7ce75bfc3586716cdcaae493d3"
+    },
+    {
+      "path": "tools/real-link-runbook/increments/sealed-batch-001/baseline/ledger.mjs.txt",
+      "sha256": "efa140ec23da04b881f419dc6374c31a121fb2c07d75ed84beea6e25d3581810"
+    },
+    {
+      "path": "tools/real-link-runbook/increments/sealed-batch-001/baseline/cli.mjs.txt",
+      "sha256": "6ae0efadf9fb91c3e6cdf21907110333ec8efe3ee37a03fcab684903157b0e72"
+    },
+    {
+      "path": "tools/real-link-runbook/increments/sealed-batch-001/baseline/ledger.test.mjs.txt",
+      "sha256": "3ed4a7e0ad547536b3b09505dcb07c9673a4b3686dd38bff3f0a14359a59a2e4"
+    },
+    {
+      "path": "tools/real-link-runbook/increments/sealed-batch-001/baseline/README.md.txt",
+      "sha256": "028a13488c4f2cb28909f90cc5621a05d5fe7d076a691721e730fe670ea6e517"
+    }
+  ],
+  "rollback": {
+    "beforeRealApply": "legacy state remains compatible",
+    "afterRealApply": "pause with new compatible tool; preserve grant and every attempt",
+    "legacyCodeAfterGrant": "fails closed on unknown field; not a usable accounting downgrade",
+    "modeRevokeApi": "NOT_IMPLEMENTED_NO_SCOPE_EXPANSION",
+    "productionLimits": "UNCHANGED"
+  }
+}

@@ -1,0 +1,23 @@
+✔ uninitialized never manufactures zero history, explicit cap is <=30 (52.7514ms)
+✔ incomplete history, unresolved main pause and nonoriginal binding fail closed (80.76ms)
+✔ lower cap shares actual/native/manual budget; wrong original Session refused (62.3779ms)
+✔ duplicate attempts and request keys never receive a new submit grant (61.3666ms)
+✔ RESERVED/POSSIBLE/UNKNOWN hold after three hours and across restart (193.8423ms)
+✔ known terminals leave rolling count after an hour, never leave idempotency history (101.2604ms)
+✔ UNKNOWN reconciles only to known submission; only unbegun reservations cancel (132.5617ms)
+✔ pause blocks begin/reserve, permits stop accounting and persists on restart (83.0392ms)
+✔ explicit history imports count actual traffic and never double count or rewrite (84.9684ms)
+✔ future timestamps, stale complete baselines and body fields are refused (41.2486ms)
+✔ six competing processes preserve cap and snapshot without lost writes (451.4874ms)
+✔ two processes racing begin receive exactly one local submit grant (263.5789ms)
+✔ stale lock cannot auto-reclaim; corrupted state fails closed (21.9562ms)
+✔ file-only CLI imports fake metadata; REAL directory override denied (478.7325ms)
+✔ late actual history exceeding cap blocks even a previously reserved begin (141.549ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2385.6571

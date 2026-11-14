@@ -1,0 +1,10 @@
+Recorded from completed local tool invocation; fictional ledgers only.
+Command: node --test tools/real-link-runbook/ledger.test.mjs tools/real-link-runbook/increments/sealed-batch-001/authorization.test.mjs
+Exit code: 0
+Tests: 32 (20 existing + 12 sealed batch increment)
+Pass: 32
+Fail: 0
+Duration: 6138.5809 ms
+Real ledger read/write: NOT_PERFORMED
+Real platform/session/API/UI operations: NOT_PERFORMED
+Independent review: PENDING

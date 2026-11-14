@@ -1,0 +1,11 @@
+{
+  "type": "task",
+  "phase": "planning",
+  "task": {
+    "id": "MAG-EXAMPLE-L1-001", "projectId": "fictional-governance-project",
+    "title": "虚构一般API字段修改", "ownerId": "hermes",
+    "kind": "api_change", "riskLevel": "L1", "riskBasis": "仅虚构模块，范围明确、可逆",
+    "reviewerIds": ["deepseek"], "goal": "增加虚构字段", "scope": "仅虚构接口",
+    "acceptanceCriteria": ["字段按预期返回"]
+  }
+}

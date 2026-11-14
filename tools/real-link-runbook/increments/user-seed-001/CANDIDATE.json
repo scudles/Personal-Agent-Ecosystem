@@ -1,0 +1,50 @@
+{
+  "format": "TRB_REAL_LINK_USER_SEED_CANDIDATE_V1",
+  "task": "TRB-REAL-LINK-USER-SEED-001",
+  "at": "2026-11-12T15:35:30.985Z",
+  "owner": "/root",
+  "implementer": "/root/ux_layout",
+  "state": "FROZEN_FOR_FIRST_REQUIRED_READ_ONLY_REVIEW",
+  "sourceHashes": {
+    "D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs": "efa140ec23da04b881f419dc6374c31a121fb2c07d75ed84beea6e25d3581810",
+    "D:/TriReviewBridge/tools/real-link-runbook/cli.mjs": "6ae0efadf9fb91c3e6cdf21907110333ec8efe3ee37a03fcab684903157b0e72",
+    "D:/TriReviewBridge/tools/real-link-runbook/ledger.test.mjs": "3ed4a7e0ad547536b3b09505dcb07c9673a4b3686dd38bff3f0a14359a59a2e4",
+    "D:/TriReviewBridge/tools/real-link-runbook/README.md": "028a13488c4f2cb28909f90cc5621a05d5fe7d076a691721e730fe670ea6e517",
+    "D:/TriReviewBridge/tools/safe-local-files.mjs": "e7dde44d2032a97fdf3455c825871be6b662ec6013bb4ac0614b1b1e0ff37a3c",
+    "D:/TriReviewBridge/tools/real-link-runbook/increments/user-seed-001/REPORT.md": "139c8fe92d6a43b6dc2e1fc5895e01f6aca62352fb71a43efa28f8bdca554a36"
+  },
+  "baseline": {
+    "candidateSha256": "633f5859e7cffa55ba64ab7ec0f30d7d515ad035f26047fd31a94575b61f9d02",
+    "allArchivedSourceHashesVerified": true,
+    "oldCandidateAndTestLogsUnchanged": true
+  },
+  "tests": {
+    "command": "runtime/node.exe --test tools/real-link-runbook/ledger.test.mjs",
+    "exitCode": 0,
+    "originalTests": 15,
+    "newTests": 5,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0,
+    "outputSha256": "6b1b9ad338028ea98ca6a8fe9b0e8443b14f7efe68dc225e988ab1aadfb49395"
+  },
+  "changes": [
+    "Explicit USER_SEED user/null origin to existing original Agent only.",
+    "Agent-to-Agent bindings unchanged; kind added to immutable attempt metadata.",
+    "Backward compatible optional field; no migration or snapshot rewrite."
+  ],
+  "independentReview": "PENDING",
+  "scope": {
+    "realAgentOperations": 0,
+    "sharedRealLedgerRead": false,
+    "sharedRealLedgerModified": false,
+    "mainDatabaseOrPauseChanged": false,
+    "frozen74Changed": false,
+    "cliChanged": false
+  },
+  "limitations": [
+    "Authority and original-session claims remain OPERATOR_ASSERTION, not automatic platform authentication.",
+    "Tool cannot prevent external manual/program bypass.",
+    "No send, RPC, UI, workflow scheduling or new recipient capability."
+  ]
+}

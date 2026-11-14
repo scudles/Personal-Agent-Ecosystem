@@ -1,0 +1,17 @@
+// Test-only local Host fixture. Never imports or calls a native Adapter.
+import {mkdirSync,mkdtempSync,readFileSync,writeFileSync,existsSync} from 'node:fs';import {resolve,join,basename} from 'node:path';import {spawn} from 'node:child_process';import {randomUUID} from 'node:crypto';import {fileURLToPath} from 'node:url';
+import {boundedRead,checkedPath} from '../safe-local-files.mjs';
+export const ROOT=resolve(fileURLToPath(new URL('../..',import.meta.url))),NODE=join(ROOT,'runtime','node.exe');
+export const wait=ms=>new Promise(r=>setTimeout(r,ms));
+export function fixtureFolder(dir){const full=resolve(dir);if(!full.startsWith(resolve(ROOT,'test-output')+'\\')||!/^hybrid-native-soak-[A-Za-z0-9_-]+$/.test(basename(full)))throw Error('fake_worker_fixed_fixture_directory_required');checkedPath(full,{mustExist:true});const marker=JSON.parse(boundedRead(join(full,'soak-fixture.json'),4096));if(marker.fixture!==true||marker.purpose!=='HYBRID_NATIVE_SOAK_ONLY')throw Error('fake_worker_marker_required');return full;}
+export function makeDirectory(){mkdirSync(join(ROOT,'test-output'),{recursive:true});const dir=mkdtempSync(join(ROOT,'test-output','hybrid-native-soak-'));return dir;}
+export function connectFixture(dir){fixtureFolder(dir);const cfg=JSON.parse(boundedRead(join(dir,'workbench-config.json'),16000)),info=JSON.parse(boundedRead(join(dir,'workbench-service.json'),16000));if(cfg.mode!=='HYBRID_NATIVE'||cfg.profileId!=='hybrid-native-001'||info.mode!=='HYBRID_NATIVE'||!Number.isInteger(info.port)||info.port<1||info.port>65535||info.url!=='http://127.0.0.1:'+info.port)throw Error('fake_worker_fixture_profile_mismatch');
+ const call=async(path,body,token=cfg.token)=>{const r=await fetch(info.url+path,{method:body===undefined?'GET':'POST',headers:{Authorization:'Bearer '+token,...body===undefined?{}:{'Content-Type':'application/json','Idempotency-Key':randomUUID()}},...body===undefined?{}:{body:JSON.stringify(body)},signal:AbortSignal.timeout(5000)});const value=await r.json();if(!r.ok)throw Error('fake_http_'+r.status+'_'+(value.error||'invalid'));return value;};
+ const api=role=>async(op,input={})=>{if(input.role!==role)throw Error('fake_worker_cross_role');const read=['peek','status'].includes(op);return call('/api/hybrid/'+op+(read?'?role='+role:''),read?undefined:input,cfg.hybridWorkerTokens[role]);};return {dir,cfg,info,call,api};
+}
+export async function startFixture(dir){
+ const child=spawn(NODE,[join(ROOT,'src','workbench-server.mjs')],{cwd:ROOT,windowsHide:true,env:{...process.env,TRB_WORKBENCH_MODE:'HYBRID_NATIVE',TRB_WORKBENCH_PROFILE:'hybrid-native-001',TRB_WORKBENCH_DATA_DIR:dir,TRB_WORKBENCH_PORT:'0',TRB_WORKBENCH_EMPTY:'1'},stdio:['ignore','pipe','pipe']});let output='';child.stdout.on('data',b=>output+=b);child.stderr.on('data',b=>output+=b);
+ for(let n=0;n<160;n++){await wait(50);if(child.exitCode!==null)throw Error('fake_host_exited');if(!existsSync(join(dir,'workbench-service.json')))continue;const i=JSON.parse(readFileSync(join(dir,'workbench-service.json'),'utf8'));if(i.pid!==child.pid)continue;
+  if(!existsSync(join(dir,'soak-fixture.json')))writeFileSync(join(dir,'soak-fixture.json'),JSON.stringify({fixture:true,purpose:'HYBRID_NATIVE_SOAK_ONLY'}),{flag:'wx'});const c=connectFixture(dir);return {...c,child,stop:async()=>{await c.call('/api/service/stop',{});for(let k=0;k<100&&child.exitCode===null;k++)await wait(50);if(child.exitCode!==0)throw Error('fake_host_not_cleanly_stopped');}};
+ }child.kill();throw Error('fake_host_start_timeout');
+}

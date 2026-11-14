@@ -1,0 +1,19 @@
+✔ candidate defaults closed before any native network, identity or credentials access (0.9009ms)
+✔ only one exact loopback origin and official existing-peer cookie shape accepted (0.3062ms)
+✔ typed official RPC queues only fixed original Session and accepted is not completed (19.6574ms)
+✔ mismatched dispatch target/hash is refused without network (0.2597ms)
+✔ uncertain network or wrong RPC identity stays UNKNOWN and is never retried (0.5707ms)
+✔ bounded page proof returns only own IDs/text, not neighboring private records (0.9793ms)
+✔ no guessing current sequence or unlimited private history window (0.2575ms)
+✔ incomplete, foreign, intervening, failed and tool-bearing own turn fail closed (0.9916ms)
+✔ duplicate matching requests or old acceptance time cannot complete a new attempt (0.2722ms)
+✔ response byte limit protects bounded private page memory; no fallback log read (1.1362ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 129.8635
+Tool process exit_code: 0

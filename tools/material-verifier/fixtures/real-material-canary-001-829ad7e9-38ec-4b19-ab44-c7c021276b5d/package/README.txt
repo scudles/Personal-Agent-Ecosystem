@@ -1,0 +1,3 @@
+Gictional material canary.
+This directory contains only invented orchard facts.
+Read-only byte verification only; no project implementation or broader filesystem permission.

@@ -1,0 +1,15 @@
+  void RequireDurableDraftForSend(){if(DraftStore==null)throw new InvalidOperationException("本机草稿持久化不可用，尚未发送；请先处理草稿存储问题。");SaveCurrentDraft();}
+  void RefreshPendingSendUi(){if(CurrentScope==null||String.IsNullOrEmpty(CurrentScope.WorkspaceId)||Client==null)return;try{var pending=Client.PendingSend(CurrentScope.ProjectId,CurrentScope.WorkspaceId);var button=C<Button>("SendButton");button.Content=pending==null?"发送":pending.State=="PENDING"?"核对上次发送":"查看上次发送结果";if(pending!=null){button.IsEnabled=!Sending;button.ToolTip="恢复同一API请求的原始键与正文；不发送当前编辑稿，不要求重发UNKNOWN原生投递。";if(UxMode)C<TextBlock>("IntentStatusText").Text="本会话上次API请求待核对；当前草稿保留。点击上方按钮恢复原请求结果，不创建第二个逻辑发送。";}}catch(Exception ex){C<Button>("SendButton").IsEnabled=false;Note("发送恢复档案无法读取，已阻止新发送："+ex.Message);}}
+  void CurrentLogicalSend(out string path,out string payload){path=null;payload=null;if(CurrentScope==null||String.IsNullOrEmpty(CurrentScope.WorkspaceId))return;if(UxMode){path=ScopePath("intent");payload=Json.Show(BuildUxIntentRequest(Composer.Text,ReplyId));}else if(ReplyId==null){path=ScopePath("chat");payload=Json.Show(Scoped("text",Composer.Text,"recipients",Chosen(),"knowledgeRefs",AttachedKnowledge.ToArray()));}else{path=ScopePath("reply");payload=Json.Show(Scoped("messageId",ReplyId,"text",Composer.Text,"recipients",Chosen(),"knowledgeRefs",AttachedKnowledge.ToArray()));}}
+  async Task RecoverClientSend(PendingClientSend pending){
+   string preview=pending.OriginalText??"";if(preview.Length>320)preview=preview.Substring(0,320)+"…";
+   if(MessageBox.Show(Win,"核对上次API请求（当前编辑稿不会发送）\n\n"+preview+"\n\n使用已封存的同一请求键、路径和正文：已有结果则取回；未提交则只恢复原逻辑请求的一次排队。不要求重发原生UNKNOWN投递。当前草稿若有任何变化会保留。继续？","核对上次发送",MessageBoxButton.YesNo)!=MessageBoxResult.Yes)return;
+   RequireDurableDraftForSend();int epoch=Epoch;Sending=true;Composer.IsEnabled=false;C<Button>("SendButton").IsEnabled=false;
+   try{var result=await Client.ReplayPending(pending.ProjectId,pending.WorkspaceId);bool same=epoch==Epoch&&CurrentScope!=null&&CurrentScope.ProjectId==pending.ProjectId&&CurrentScope.WorkspaceId==pending.WorkspaceId;
+    if(!same){RequireDurableDraftForSend();Note("原API结果已保存；切回原会话核对。当前会话草稿未发送。");return;}
+    string path,payload;CurrentLogicalSend(out path,out payload);bool clear=ClientPendingStore.ClearRecoveredDraft(pending,path,payload,result);
+    if(clear){Composer.Clear();ReplyId=null;ReplyBanner.Visibility=Visibility.Collapsed;AttachedKnowledge.Clear();}
+    RequireDurableDraftForSend();Client.FinishLogicalSend(pending.ProjectId,pending.WorkspaceId);await RefreshWorkspace();string summary=Json.Str(result,"status")=="CLIENT_REQUEST_REJECTED"?Json.Str(result,"summary"):"原API请求结果已核对；未创建第二个逻辑发送。原生投递若为UNKNOWN仍不重发。";
+    if(!clear)summary+=" 当前编辑稿已保留且未发送。";Note(summary);if(UxMode)C<TextBlock>("IntentStatusText").Text=summary;
+   }finally{Sending=false;Composer.IsEnabled=true;if(CurrentScope!=null)C<Button>("SendButton").IsEnabled=UxMode||Chosen().Length>0;RefreshPendingSendUi();}
+  }

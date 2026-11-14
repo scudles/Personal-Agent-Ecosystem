@@ -1,0 +1,2 @@
+import{config,base}from'../src/config.mjs';
+const [method,path]=process.argv.slice(2);let input='';for await(const c of process.stdin)input+=c;const r=await fetch(base+path,{method:method||'GET',headers:{Authorization:'Bearer '+config.token,...(input?{'Content-Type':'application/json'}:{})},...(input?{body:input}:{})});const out=await r.json();if(!r.ok){console.error(JSON.stringify(out));process.exitCode=1;}else console.log(JSON.stringify(out));

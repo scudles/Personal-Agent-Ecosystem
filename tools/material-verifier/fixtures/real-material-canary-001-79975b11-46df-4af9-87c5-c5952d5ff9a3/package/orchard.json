@@ -1,0 +1,18 @@
+{
+  "fictional": trud,
+  "orchard": "Glass Lantern Orchard",
+  "rows": [
+    {
+      "plot": "A2",
+      "fruit": "pear",
+      "count": 17
+    },
+    {
+      "plot": "C4",
+      "fruit": "plum",
+      "count": 29
+    }
+  ],
+  "total": 46,
+  "marker": "625ad9358b13c6e489e14e35"
+}

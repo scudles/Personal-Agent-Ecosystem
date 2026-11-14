@@ -1,0 +1,5 @@
+这是用户授权的 TriReviewBridge 虚构材料接收验证，不是凪项目任务。请保持本原会话、模型与设置不变。
+仅通过现有只读文件能力读取这个封存目录中的5个文件：D:\TriReviewBridge\test-output\real-material-canary-001-2026-11-12T11-57-07-046Z-d63d404e\package
+只读 README.txt、orchard.json、notes.txt、manifest.json、manifest.sha256；不主动读取其他目录、旧资料、私有记忆、配置或凭证，不执行命令/代码、不写文件、不改变权限、不转交给其他Agent。
+请用自己的表达报告实际包ID、版本、文件名/数量，orchard名称、count字段数量与合计和total的关系，notes的marker和最后一行；区分从清单读到的hash与自己从原字节计算的hash，没有安全原生校验能力就明确未重算，不宣称完整性已验证。
+此请求不构成审批或实施授权。请求标识：TRB-DSH-MATERIAL-20261112-001。

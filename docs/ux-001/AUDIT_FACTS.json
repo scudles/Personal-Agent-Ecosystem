@@ -1,0 +1,396 @@
+{
+  "at": "2026-11-12T09:08:49.243Z",
+  "taskId": "TRB-UX-001",
+  "owner": "Codex",
+  "risk": "L2",
+  "phase": 0,
+  "window": {
+    "width": 1420,
+    "height": 920,
+    "minWidth": 1080,
+    "minHeight": 730
+  },
+  "namedButtons": 56,
+  "buttons": [
+    {
+      "id": "NewWindowButton",
+      "label": "另开原生窗口"
+    },
+    {
+      "id": "RefreshButton",
+      "label": "刷新"
+    },
+    {
+      "id": "StopBackendButton",
+      "label": "停止后台…"
+    },
+    {
+      "id": "CloseWindowButton",
+      "label": "关闭窗口"
+    },
+    {
+      "id": "NewProjectButton",
+      "label": "新建项目"
+    },
+    {
+      "id": "RenameProjectButton",
+      "label": "重命名"
+    },
+    {
+      "id": "ArchiveProjectButton",
+      "label": "归档"
+    },
+    {
+      "id": "ProjectSettingsButton",
+      "label": "项目设置/权限"
+    },
+    {
+      "id": "KnowledgeButton",
+      "label": "项目知识"
+    },
+    {
+      "id": "NewWorkspaceButton",
+      "label": "新建 Workspace"
+    },
+    {
+      "id": "RenameWorkspaceButton",
+      "label": "窗口名称"
+    },
+    {
+      "id": "ParticipantsButton",
+      "label": "参与者"
+    },
+    {
+      "id": "BindButton",
+      "label": "绑定模拟会话"
+    },
+    {
+      "id": "PauseBindingButton",
+      "label": "暂停/恢复选中接入"
+    },
+    {
+      "id": "PauseWorkspaceButton",
+      "label": "暂停/恢复此空间"
+    },
+    {
+      "id": "ArchiveWorkspaceButton",
+      "label": "归档空间"
+    },
+    {
+      "id": "CancelReplyButton",
+      "label": "取消引用"
+    },
+    {
+      "id": "SendButton",
+      "label": "定向发送 / 排队"
+    },
+    {
+      "id": "RestoreDraftButton",
+      "label": "恢复本空间草稿…"
+    },
+    {
+      "id": "AttachKnowledgeButton",
+      "label": "附加知识版本…"
+    },
+    {
+      "id": "ObservationButton",
+      "label": "记录差异观察"
+    },
+    {
+      "id": "ReplyButton",
+      "label": "回复选中消息"
+    },
+    {
+      "id": "ForwardButton",
+      "label": "转交给 Agent…"
+    },
+    {
+      "id": "MessageTaskButton",
+      "label": "创建文字任务…"
+    },
+    {
+      "id": "MessageReviewButton",
+      "label": "发起审批…"
+    },
+    {
+      "id": "MessageDetailsButton",
+      "label": "来源与技术详情"
+    },
+    {
+      "id": "NewTaskButton",
+      "label": "新建文字任务…"
+    },
+    {
+      "id": "NewReviewButton",
+      "label": "新建正式审批…"
+    },
+    {
+      "id": "CrossButton",
+      "label": "明确开启交叉审查…"
+    },
+    {
+      "id": "ReviewRecordButton",
+      "label": "记录分歧/结论…"
+    },
+    {
+      "id": "ReviseButton",
+      "label": "修订并重新审批…"
+    },
+    {
+      "id": "CancelItemButton",
+      "label": "取消事项"
+    },
+    {
+      "id": "AuthorizeButton",
+      "label": "记录用户明确授权…"
+    },
+    {
+      "id": "ItemDetailsButton",
+      "label": "快照、意见与历史"
+    },
+    {
+      "id": "MaterialsRefreshButton",
+      "label": "刷新材料"
+    },
+    {
+      "id": "MaterialsSourceButton",
+      "label": "登记虚构工程来源…"
+    },
+    {
+      "id": "MaterialsRetireButton",
+      "label": "退役来源登记…"
+    },
+    {
+      "id": "MaterialsSnapshotDetailsButton",
+      "label": "快照详情…"
+    },
+    {
+      "id": "MaterialsAttemptButton",
+      "label": "处理模拟待核对…"
+    },
+    {
+      "id": "MaterialsSnapshotButton",
+      "label": "捕获 Working Tree…"
+    },
+    {
+      "id": "MaterialsPackageButton",
+      "label": "生成材料包…"
+    },
+    {
+      "id": "MaterialsHandoverButton",
+      "label": "准备人工交付清单…"
+    },
+    {
+      "id": "MaterialsHandoverReportButton",
+      "label": "登记人工交付报告…"
+    },
+    {
+      "id": "MaterialsMockReceiveButton",
+      "label": "分发给选中的模拟对象"
+    },
+    {
+      "id": "MaterialsReadButton",
+      "label": "阅读选定材料"
+    },
+    {
+      "id": "MaterialsVerifyButton",
+      "label": "校验文件完整性"
+    },
+    {
+      "id": "MaterialsExportButton",
+      "label": "导出待交付材料"
+    },
+    {
+      "id": "MaterialsDetailsButton",
+      "label": "版本与哈希详情"
+    },
+    {
+      "id": "GovRefreshButton",
+      "label": "刷新"
+    },
+    {
+      "id": "GovRegisterButton",
+      "label": "登记工程治理…"
+    },
+    {
+      "id": "GovRoundButton",
+      "label": "开始必要复核…"
+    },
+    {
+      "id": "GovOpinionButton",
+      "label": "记录版本意见…"
+    },
+    {
+      "id": "GovIssueButton",
+      "label": "登记问题…"
+    },
+    {
+      "id": "GovIssueStateButton",
+      "label": "处理问题…"
+    },
+    {
+      "id": "GovCheckButton",
+      "label": "检查模拟交付条件…"
+    },
+    {
+      "id": "GovIntentButton",
+      "label": "核对治理请求…"
+    }
+  ],
+  "tabs": [
+    {
+      "title": "对话与消息",
+      "buttons": [
+        "CancelReplyButton",
+        "SendButton",
+        "RestoreDraftButton",
+        "AttachKnowledgeButton",
+        "ObservationButton",
+        "ReplyButton",
+        "ForwardButton",
+        "MessageTaskButton",
+        "MessageReviewButton",
+        "MessageDetailsButton"
+      ]
+    },
+    {
+      "title": "任务与审批",
+      "buttons": [
+        "NewTaskButton",
+        "NewReviewButton",
+        "CrossButton",
+        "ReviewRecordButton",
+        "ReviseButton",
+        "CancelItemButton",
+        "AuthorizeButton",
+        "ItemDetailsButton"
+      ]
+    },
+    {
+      "title": "工程材料",
+      "buttons": [
+        "MaterialsRefreshButton",
+        "MaterialsSourceButton",
+        "MaterialsRetireButton",
+        "MaterialsSnapshotDetailsButton",
+        "MaterialsAttemptButton",
+        "MaterialsSnapshotButton",
+        "MaterialsPackageButton",
+        "MaterialsHandoverButton",
+        "MaterialsHandoverReportButton",
+        "MaterialsMockReceiveButton",
+        "MaterialsReadButton",
+        "MaterialsVerifyButton",
+        "MaterialsExportButton",
+        "MaterialsDetailsButton"
+      ]
+    },
+    {
+      "title": "治理与证据",
+      "buttons": [
+        "GovRefreshButton",
+        "GovRegisterButton",
+        "GovRoundButton",
+        "GovOpinionButton",
+        "GovIssueButton",
+        "GovIssueStateButton",
+        "GovCheckButton",
+        "GovIntentButton"
+      ]
+    }
+  ],
+  "codeBehind": [
+    {
+      "file": "desktop/DraftStore.cs",
+      "bytes": 6879,
+      "modalFieldCalls": 0
+    },
+    {
+      "file": "desktop/EngineeringMaterials.cs",
+      "bytes": 11190,
+      "modalFieldCalls": 6
+    },
+    {
+      "file": "desktop/GovernancePanel.cs",
+      "bytes": 21202,
+      "modalFieldCalls": 12
+    },
+    {
+      "file": "desktop/MaterialRecovery.cs",
+      "bytes": 6004,
+      "modalFieldCalls": 1
+    },
+    {
+      "file": "desktop/WorkbenchApp.cs",
+      "bytes": 50857,
+      "modalFieldCalls": 24
+    }
+  ],
+  "legacyWebFiles": [
+    "web/index.html",
+    "web/style.css",
+    "web/app.js"
+  ],
+  "backendWorkspaceActions": [
+    "issue-simulation-token",
+    "begin-cross",
+    "review-record",
+    "observe",
+    "configure",
+    "bind-simulation",
+    "pause-binding",
+    "chat",
+    "reply",
+    "forward",
+    "tasks",
+    "reviews",
+    "revise",
+    "cancel",
+    "user-authorize",
+    "simulate-fault",
+    "simulate-agent"
+  ],
+  "materialActions": [
+    "materials-queue",
+    "materials-receive",
+    "materials-reconcile",
+    "materials-cancel",
+    "materials-review-evidence",
+    "materials-governance-register",
+    "materials-governance-review",
+    "materials-governance-issue",
+    "materials-governance-assess",
+    "materials-mock-self-test",
+    "materials-handover-prepare",
+    "materials-handover-report",
+    "materials-source-retire",
+    "materials-snapshot-details",
+    "materials-file-list",
+    "materials-source",
+    "materials-snapshot",
+    "materials-package",
+    "materials-verify",
+    "materials-view",
+    "materials-export"
+  ],
+  "naturalLanguageIntentEndpointExists": false,
+  "sourceHashes": {
+    "desktop/OfflineWindow.xaml": "2ba986a22a96bc33746a88246e3fb90abc63d36c3a15da820c1ce6241dd59a21",
+    "desktop/WorkbenchApp.cs": "a2c521400527acd8ff30abf00aa1172003a04a1e0c900881e4c4ee9ae34b30c2",
+    "desktop/EngineeringMaterials.cs": "2ebbf577c4e8403767a0d19e010d270db9ba6cdda406d053209e9e828a94c8b8",
+    "desktop/GovernancePanel.cs": "708f6961f47332d32dccb2a25b0a2aaf271de2655c8c4f7b85b338c03fe310b4",
+    "desktop/MaterialRecovery.cs": "507e79a7de2db79f5d6ffeb33c127da9b7c607db2ba4af6cbcd67267af9061d7",
+    "desktop/DraftStore.cs": "5a3902358bc55b6a90e933f579afa0fe79622fb5dd08d75cb2f1ebcb4b0c5d39",
+    "src/workbench-server.mjs": "bc9e801808dcca60125c79f044e94b541611870225bb5b1f439713e10c21be95",
+    "engineering/desktop-api.mjs": "007d42b84ae302a4612deab4544be00e1b9cca8798bcb52a442bf01367104518"
+  },
+  "databaseChangeRequiredForUx": false,
+  "baselineTests": {
+    "passed": 127,
+    "failed": 0,
+    "realAdapters": 0
+  },
+  "baselineSoakRequiredSeconds": 3600,
+  "description": "Phase 0 source audit, not proof of new UX implementation or original-session connectivity",
+  "currentCandidateUi": "C# WPF / XAML"
+}

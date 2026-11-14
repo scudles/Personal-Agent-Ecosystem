@@ -1,0 +1,50 @@
+✔ uninitialized never manufactures zero history, explicit cap is <=30 (56.2117ms)
+✔ incomplete history, unresolved main pause and nonoriginal binding fail closed (84.5357ms)
+✔ lower cap shares actual/native/manual budget; wrong original Session refused (70.3975ms)
+✔ duplicate attempts and request keys never receive a new submit grant (64.9297ms)
+✔ RESERVED/POSSIBLE/UNKNOWN hold after three hours and across restart (202.9447ms)
+✔ known terminals leave rolling count after an hour, never leave idempotency history (100.7536ms)
+✔ UNKNOWN reconciles only to known submission; only unbegun reservations cancel (142.0487ms)
+✔ pause blocks begin/reserve, permits stop accounting and persists on restart (87.0591ms)
+✔ explicit history imports count actual traffic and never double count or rewrite (94.5036ms)
+✔ future timestamps, stale complete baselines and body fields are refused (43.2118ms)
+✖ six competing processes preserve cap and snapshot without lost writes (446.0565ms)
+✖ two processes racing begin receive exactly one local submit grant (254.9586ms)
+✔ stale lock cannot auto-reclaim; corrupted state fails closed (22.2984ms)
+✔ file-only CLI imports fake metadata; REAL directory override denied (418.9071ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 12
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2234.5648
+
+✖ failing tests:
+
+test at tools\real-link-runbook\ledger.test.mjs:63:1
+✖ six competing processes preserve cap and snapshot without lost writes (446.0565ms)
+  Error: valid_nonfuture_utc_timestamp_required
+      at need (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs:13:37)
+      at instant (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs:18:25)
+      at validateState (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs:40:109)
+      at RunbookLedger.locked (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs:66:279)
+      at RunbookLedger.status (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs:57:166)
+      at TestContext.<anonymous> (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.test.mjs:64:344)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tools\real-link-runbook\ledger.test.mjs:66:1
+✖ two processes racing begin receive exactly one local submit grant (254.9586ms)
+  Error: valid_nonfuture_utc_timestamp_required
+      at need (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs:13:37)
+      at instant (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs:18:25)
+      at validateState (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs:40:109)
+      at RunbookLedger.locked (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs:66:279)
+      at RunbookLedger.status (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs:57:166)
+      at TestContext.<anonymous> (file:///D:/TriReviewBridge/tools/real-link-runbook/ledger.test.mjs:67:449)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

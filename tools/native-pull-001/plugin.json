@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "native-pull-001-canary",
+  "version": "0.1.0",
+  "description": "Candidate only: read one fictional canary and store its bounded reply. No original conversation authentication.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Fictional Native Pull Canary",
+        "shortDescription": "One fixed fictional message and one reply"
+      }
+    }
+  }
+}

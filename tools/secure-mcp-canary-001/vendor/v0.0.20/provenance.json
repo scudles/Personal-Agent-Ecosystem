@@ -1,0 +1,8 @@
+{
+  "officialRelease": "https://github.com/openai/tunnel-client/releases/tag/v0.0.20",
+  "archiveSha256": "99474aaa62ece303d7b661f2f46f932dcd560b489b540f817355da25be71bcf3",
+  "exeSha256": "92812d43cbbf030f2bee30d9ad1bef26884dcf12d2ccaefc60c40fa8122501db",
+  "helpExit": 0,
+  "quickstartExit": 0,
+  "downloadOnlyNoConnection": true
+}

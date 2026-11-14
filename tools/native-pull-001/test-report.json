@@ -1,0 +1,56 @@
+{
+  "scope": "LOCAL_SDK_STDIO_PROTOCOL_TEST_ONLY",
+  "originalChatGPTCallTested": false,
+  "originalConversationAuthenticated": false,
+  "networkListenerStarted": false,
+  "persistentServiceStarted": false,
+  "testedAt": "2026-11-12T23:48:31.841Z",
+  "node": "v26.12.1",
+  "fixtureDirectory": "D:\\TriReviewBridge\\tools\\native-pull-001\\test-runs\\fixture-0vhcIN",
+  "childPids": [
+    36928,
+    10368
+  ],
+  "checks": [
+    {
+      "name": "initialize official SDK stdio client",
+      "status": "PASS"
+    },
+    {
+      "name": "tools/list exactly two bounded strict tools",
+      "status": "PASS"
+    },
+    {
+      "name": "get fixed fictional probe and repeat without storage mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "extra path rejected by get schema",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong run/message/nonce/hash and unknown reply path rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "correct reply atomically stored with honest provenance",
+      "status": "PASS"
+    },
+    {
+      "name": "identical and reordered duplicate reply returns original receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "conflicting reply rejected, original result retained",
+      "status": "PASS"
+    },
+    {
+      "name": "restart SDK child preserves durable idempotency",
+      "status": "PASS"
+    },
+    {
+      "name": "fixed database contains exactly one fictional result",
+      "status": "PASS"
+    }
+  ]
+}

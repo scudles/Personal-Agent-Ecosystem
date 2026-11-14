@@ -1,0 +1,5 @@
+{
+ "type":"intent",
+ "task":{"id":"MAG-EXAMPLE-REMINDER-001","projectId":"fictional-governance-project"},
+ "intent":{"operation":"force_all_agents_every_task","requestSummary":"虚构测试：要求所有任务默认进行三方审查"}
+}

@@ -1,0 +1,53 @@
+{
+  "version": "MAG-001",
+  "status": "ACTIVE",
+  "protected": true,
+  "defaultModel": "one_owner_one_necessary_reviewer_third_on_demand",
+  "maxReviewRounds": 2,
+  "allowedReopenReasons": [
+    "new_evidence",
+    "substantive_code_change",
+    "risk_change"
+  ],
+  "l2EscalationReasons": [
+    "unresolved_substantive_disagreement",
+    "cross_domain",
+    "important_security_or_architecture_risk",
+    "clear_additional_value"
+  ],
+  "riskLevels": {
+    "L0": {
+      "reviewers": 0
+    },
+    "L1": {
+      "reviewers": 1
+    },
+    "L2": {
+      "minimum": 1,
+      "maximum": 2,
+      "thirdRequiresBasis": true
+    },
+    "L3": {
+      "minimum": 1,
+      "maximum": 2,
+      "specialistReview": true
+    }
+  },
+  "severity": {
+    "P0": {
+      "blocking": true,
+      "stop": true
+    },
+    "P1": {
+      "blocking": true
+    },
+    "P2": {
+      "blocking": false
+    },
+    "P3": {
+      "blocking": false
+    }
+  },
+  "source": "user_supplied_MAG_001_and_explicit_effective_correction",
+  "adoptedAt": "2026-11-12T02:55:58.788Z"
+}

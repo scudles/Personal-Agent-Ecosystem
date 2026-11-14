@@ -1,0 +1,51 @@
+{
+  "format": "TRB_REAL_LINK_RUNBOOK_CANDIDATE_V1",
+  "task": "TRB-REAL-LINK-RUNBOOK-001",
+  "at": "2026-11-12T14:50:03.652Z",
+  "owner": "/root",
+  "implementer": "/root/ux_layout",
+  "state": "FROZEN_FOR_TARGETED_SECOND_REVIEW",
+  "sourceHashes": {
+    "D:/TriReviewBridge/tools/real-link-runbook/ledger.mjs": "ab27f7854834f2c11f2b884037bd981aede603ce53dcf523bd3c87c6760bba29",
+    "D:/TriReviewBridge/tools/real-link-runbook/cli.mjs": "6ae0efadf9fb91c3e6cdf21907110333ec8efe3ee37a03fcab684903157b0e72",
+    "D:/TriReviewBridge/tools/real-link-runbook/ledger.test.mjs": "c8ce5220220272affc7ecc71835fd13aa90149d1e2f47ad9c90d569a16cdf93d",
+    "D:/TriReviewBridge/tools/real-link-runbook/README.md": "639b8061b142200e186e04bf5e65e7034c264194f2d87078fd589652bcb4a933",
+    "D:/TriReviewBridge/tools/safe-local-files.mjs": "e7dde44d2032a97fdf3455c825871be6b662ec6013bb4ac0614b1b1e0ff37a3c"
+  },
+  "tests": {
+    "command": "runtime/node.exe --test tools/real-link-runbook/ledger.test.mjs",
+    "exitCode": 0,
+    "tests": 15,
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0,
+    "processCompetition": true,
+    "unknownRestart": true,
+    "lateHistoryBeginCaps": [
+      1,
+      30
+    ],
+    "finalOutputSha256": "cfe10d1b5d8a8afc7bba305eb1055bc6837a6f969b32397cb266669a34b55850",
+    "initialOutputSha256": "96cb9cbf8dbb99d4b70893e94a4bfcecb18f26ff8a534898b1a1f503df46b317",
+    "previous15PassOutputSha256": "d98d21ccebcac8b7b72e448725eb9f5aef95ac62953846d28f67d1ed9bd938ff"
+  },
+  "review": {
+    "round": 1,
+    "blockingFinding": "P1-RUNBOOK-CAP-001",
+    "implementationFixed": true,
+    "independentSecondReview": "PENDING"
+  },
+  "scope": {
+    "metadataOnly": true,
+    "realAgentOperations": 0,
+    "realLedgerInitializedByImplementation": false,
+    "mainStateChanged": false,
+    "frozen74Edited": false
+  },
+  "limitations": [
+    "OPERATOR_ASSERTION history/bindings/pause-boundary are not platform authentication.",
+    "External manual/program bypass cannot be prevented; incomplete full-traffic history remains NOT_READY.",
+    "No sender/RPC/UI/background job or old-queue restoration.",
+    "Real baseline remains unknown; no fabricated zero-history initialization."
+  ]
+}

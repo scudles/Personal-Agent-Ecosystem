@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-12T23:34:03.8540273Z",
+  "status": "PROMOTED",
+  "binary": "runtime/native/TriReviewBridge.UX.Collab.exe",
+  "binarySha256": "d363db25306922974c76037a837bf679b951316389df3fea69530e087030db66",
+  "testedCandidate": "runtime/client-pending-002/TriReviewBridge.UX.Collab.exe",
+  "candidateSha256": "d363db25306922974c76037a837bf679b951316389df3fea69530e087030db66",
+  "rollback": "backups/client-pending-002/TriReviewBridge.UX.Collab.before.exe",
+  "oldBinarySha256": "871037d6e79227a90e6e8b0b2b2ecf79d38591763ddf3c39aafbcd9ef91f2532",
+  "launcherChanged": false,
+  "databaseMigration": false,
+  "mode": "SIMULATION_ONLY",
+  "realAgentOperations": 0,
+  "existingWindowsAutomaticallyRestarted": false,
+  "failureType": null
+}
