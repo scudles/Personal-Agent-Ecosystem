@@ -3,7 +3,7 @@ import {PINNED,structuredObjects}from'./workflow.mjs';
 import {writeFileSync,mkdirSync,existsSync}from'node:fs';import{join}from'node:path';import{root}from'./config.mjs';
 const inflight=['sending','submitted','waiting','unknown'];
 export class Supervisor{
- constructor(workflow,bridge=transport,options={}){this.w=workflow;this.transport=bridge;this.evidenceDir=options.evidenceDir||join(root,'evidence','phase2');this.stopped=false;this.desktopBusy=false;this.hermesBusy=false;this.turn=0;this.lastWatch={};this.notBefore={};mkdirSync(this.evidenceDir,{recursive:true});}
+ constructor(workflow,bridge,options={}){if(!bridge)throw new Error('transport_required_no_default');this.w=workflow;this.transport=bridge;this.evidenceDir=options.evidenceDir||join(root,'evidence','phase2');this.stopped=false;this.desktopBusy=false;this.hermesBusy=false;this.turn=0;this.lastWatch={};this.notBefore={};mkdirSync(this.evidenceDir,{recursive:true});}
  start(){this.timer=setInterval(()=>this.tick(),3000);this.tick();}
  stop(){this.stopped=true;clearInterval(this.timer);}
  status(role,status,detail=''){this.w.heartbeat(role,{status,detail,transport:role==='hermes'?'existing-gateway':'independent-windows-uia',pid:process.pid});}
