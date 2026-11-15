@@ -1,0 +1,217 @@
+﻿diff --git a/DEVELOPMENT_LOG.md b/DEVELOPMENT_LOG.md
+index 7a9459f..f94d1c1 100644
+--- a/DEVELOPMENT_LOG.md
++++ b/DEVELOPMENT_LOG.md
+@@ -12,12 +12,19 @@
+ 
+ ### Review fixes (2026-11-12)
+ 
+-- Room id compatibility: the real 001 database seeds `common-room`, so the id is kept as-is; `server/index.mjs` now uses one `ROOM_ID` constant instead of `room-main`. The display name stays `共同房间`.
++- Room id compatibility: the real 001 database seeds `common-room`, so the id is kept as-is; `server/index.mjs` now uses one `ROOM_ID` constant instead of the former hard-coded id. The display name stays `共同房间`.
+ - Migration test now uses the real `common-room` seed and asserts that bootstrap finds the old message after `001 → 002` (and that seeding does not add a second room).
+ - `runs.reply_message_id` added in `002_p01`; the success path stores the reply message id.
+ 
++### P0.1.1 migration-test hardening (2026-11-12)
++
++- Rebuilt the old database from the real `001_initial.sql` (`CURRENT_TIMESTAMP` format, two messages, one event), migrated it, then started `createApp` and asserted `/api/bootstrap` returns the original room name and both messages in order.
++- Added FK checks after migration: `PRAGMA foreign_keys` must be `1`, invalid `messages.room_id`, `messages.reply_to_id`, and `runs.trigger_message_id` inserts must throw, and `PRAGMA foreign_key_check` must stay empty.
++- Success path now asserts `run.trigger_message_id = human message`, `run.reply_message_id = reply message`, and `reply.reply_to_id = human message`; failure path asserts `reply_message_id IS NULL`.
++- Temp directories are removed with `maxRetries: 3, retryDelay: 50` to tolerate Windows WAL handle release.
++
+ ### Verification
+ 
+-- `npm test`: 9 tests, 0 failures. Covers bootstrap, ISO round-trip, malformed URL survival, cross-site/token/content-type rejection, runtime failure preservation, second message during a delayed runtime, FakeRuntime stream modes, member CHECK/foreign keys, and `001 → 002` data migration.
++- `npm test`: 10 tests, 0 failures. Covers bootstrap, ISO round-trip, malformed URL survival, cross-site/token/content-type rejection, runtime failure preservation, second message during a delayed runtime, FakeRuntime stream modes, member CHECK/foreign keys, fresh-database FK enforcement, and a real `001 → 002` migration read through `/api/bootstrap`.
+ - `npm run build`: passed (`tsc --noEmit` + Vite production build).
+ - `npm start` requires a local browser Origin or the printed token; the browser UI is unchanged apart from UTC-safe time rendering and a refresh after a 502.
+diff --git a/test/studio.test.mjs b/test/studio.test.mjs
+index 304b1bf..68c8806 100644
+--- a/test/studio.test.mjs
++++ b/test/studio.test.mjs
+@@ -93,9 +93,15 @@ test('message flow stores ISO UTC timestamps and a reply link', async (t) => {
+   assert.equal(new Date(human.created_at).toISOString(), human.created_at);
+   assert.ok(Math.abs(Date.now() - Date.parse(human.created_at)) < 10_000);
+ 
+-  const run = app.db.prepare('SELECT status, reply_message_id FROM runs').get();
++  const run = app.db.prepare('SELECT status, trigger_message_id, reply_message_id FROM runs').get();
+   assert.equal(run.status, 'done');
++  assert.equal(run.trigger_message_id, res.body.messageId);
+   assert.equal(run.reply_message_id, res.body.replyMessageId);
++
++  const trigger = app.db.prepare('SELECT id, reply_to_id FROM messages WHERE id = ?').get(res.body.messageId);
++  assert.equal(trigger.reply_to_id, null);
++  const replyMessage = app.db.prepare('SELECT id, reply_to_id FROM messages WHERE id = ?').get(res.body.replyMessageId);
++  assert.equal(replyMessage.reply_to_id, res.body.messageId);
+   const fts = app.db.prepare("SELECT COUNT(*) AS n FROM messages_fts WHERE messages_fts MATCH 'hello'").get();
+   assert.equal(fts.n, 2);
+ });
+@@ -155,9 +161,11 @@ test('runtime failure keeps the human message and records a failed run', async (
+   assert.equal(bootstrap.body.messages.length, 1);
+   assert.equal(bootstrap.body.messages[0].body, 'still here');
+ 
+-  const run = app.db.prepare('SELECT status, error_code FROM runs').get();
++  const run = app.db.prepare('SELECT status, error_code, trigger_message_id, reply_message_id FROM runs').get();
+   assert.equal(run.status, 'failed');
+   assert.equal(run.error_code, 'FAKE_RUNTIME_FAILED');
++  assert.equal(run.trigger_message_id, res.body.messageId);
++  assert.equal(run.reply_message_id, null);
+   const event = app.db.prepare("SELECT type FROM events WHERE type = 'runtime.failed'").get();
+   assert.ok(event);
+ });
+@@ -229,56 +237,77 @@ test('member kinds are constrained and foreign keys stay clean', async (t) => {
+   assert.deepEqual(app.db.prepare('PRAGMA foreign_key_check').all(), []);
+ });
+ 
+-test('002 migrates old 001 rows without data loss', async (t) => {
++test('002 migrates a real 001 database and bootstrap still shows its room and messages', async (t) => {
+   const dir = await mkdtemp(join(tmpdir(), 'studio-alpha-migrate-'));
+   const file = join(dir, 'old.sqlite');
+   let migrated = null;
+   t.after(async () => {
+     migrated?.close();
+-    await rm(dir, { recursive: true, force: true });
++    await rm(dir, { recursive: true, force: true, maxRetries: 3, retryDelay: 50 });
+   });
+ 
++  // Build the old database from the real 001 schema, not from a hand-written
++  // approximation. 001 used CURRENT_TIMESTAMP: `YYYY-MM-DD HH:MM:SS`, no zone.
+   const old = new DatabaseSync(file);
+   old.exec('PRAGMA foreign_keys = ON');
+   old.exec(readFileSync(join(ROOT, 'migrations', '001_initial.sql'), 'utf8'));
+   old.prepare(
+-    "INSERT INTO members(id, display_name, kind, created_at) VALUES ('legacy-fake', 'Legacy', 'fake', '2026-11-11 15:30:36')",
++    "INSERT INTO members(id, display_name, kind, created_at) VALUES ('legacy-human', 'Legacy Human', 'human', datetime('now', '-2 days'))",
++  ).run();
++  old.prepare(
++    "INSERT INTO members(id, display_name, kind, created_at) VALUES ('legacy-fake', 'Legacy Fake', 'fake', datetime('now', '-2 days'))",
++  ).run();
++  old.prepare(
++    "INSERT INTO rooms(id, name, description, created_at) VALUES ('common-room', '共同房间', '', datetime('now', '-2 days'))",
+   ).run();
+   old.prepare(
+-    "INSERT INTO rooms(id, name, description, created_at) VALUES ('common-room', '共同房间', '', '2026-11-11 15:30:36')",
++    "INSERT INTO room_members(room_id, member_id, joined_at) VALUES ('common-room', 'legacy-human', datetime('now', '-2 days'))",
+   ).run();
+   old.prepare(
+-    "INSERT INTO room_members(room_id, member_id, joined_at) VALUES ('common-room', 'legacy-fake', '2026-11-11 15:30:36')",
++    "INSERT INTO room_members(room_id, member_id, joined_at) VALUES ('common-room', 'legacy-fake', datetime('now', '-2 days'))",
+   ).run();
+   old.prepare(
+-    "INSERT INTO messages(room_id, member_id, body, created_at) VALUES ('common-room', 'legacy-fake', 'old message', '2026-11-11 15:30:36')",
++    "INSERT INTO messages(room_id, member_id, body, created_at) VALUES ('common-room', 'legacy-human', 'first old message', datetime('now', '-2 days'))",
+   ).run();
+   old.prepare(
+-    "INSERT INTO events(room_id, actor_id, message_id, type, payload_json, created_at) VALUES ('common-room', 'legacy-fake', 1, 'message.created', '{}', '2026-11-11 15:30:36')",
++    "INSERT INTO messages(room_id, member_id, body, created_at) VALUES ('common-room', 'legacy-fake', 'second old message', datetime('now', '-1 day'))",
++  ).run();
++  old.prepare(
++    "INSERT INTO events(room_id, actor_id, message_id, type, payload_json, created_at) VALUES ('common-room', 'legacy-human', 1, 'message.created', '{}', datetime('now', '-2 days'))",
+   ).run();
+   old.exec(`CREATE TABLE schema_migrations (
+     version TEXT PRIMARY KEY,
+-    applied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
++    applied_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+   )`);
+   old.prepare("INSERT INTO schema_migrations(version) VALUES ('001_initial')").run();
+   old.close();
+ 
+   migrated = openDatabase(file);
+ 
+-  const member = migrated.prepare("SELECT kind, runtime_type FROM members WHERE id = 'legacy-fake'").get();
+-  assert.equal(member.kind, 'agent');
+-  assert.equal(member.runtime_type, 'fake');
+-
+-  const message = migrated.prepare("SELECT body, created_at, reply_to_id FROM messages WHERE body = 'old message'").get();
+-  assert.equal(message.created_at, '2026-11-11T15:30:36Z');
+-  assert.equal(message.reply_to_id, null);
+-
+-  assert.equal(migrated.prepare('SELECT COUNT(*) AS n FROM messages').get().n, 1);
++  const room = migrated.prepare('SELECT id, name FROM rooms').get();
++  assert.equal(room.id, 'common-room');
++  assert.equal(room.name, '共同房间');
+   assert.equal(migrated.prepare('SELECT COUNT(*) AS n FROM rooms').get().n, 1);
++
++  const legacy = migrated.prepare("SELECT kind, runtime_type FROM members WHERE id = 'legacy-fake'").get();
++  assert.equal(legacy.kind, 'agent');
++  assert.equal(legacy.runtime_type, 'fake');
++
++  const messages = migrated.prepare('SELECT id, body, created_at, reply_to_id FROM messages ORDER BY id').all();
++  assert.equal(messages.length, 2);
++  assert.deepEqual(messages.map((message) => message.body), ['first old message', 'second old message']);
++  for (const message of messages) {
++    assert.match(message.created_at, /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{3})?Z$/);
++    assert.equal(message.reply_to_id, null);
++  }
++  assert.equal(
++    migrated.prepare("SELECT COUNT(*) AS n FROM events WHERE type = 'message.created'").get().n,
++    1,
++  );
+   assert.equal(migrated.prepare('SELECT COUNT(*) AS n FROM schema_migrations').get().n, 2);
++  assert.deepEqual(migrated.prepare('PRAGMA foreign_key_check').all(), []);
+ 
+-  // The seed must not create a second room next to the one the old database
+-  // already has; bootstrap must find the old messages through the real id.
++  // The room and its history must survive the application layer, not just SQL.
+   const app = createApp(migrated, { localToken: TOKEN });
+   await new Promise((ready) => app.listen(0, '127.0.0.1', ready));
+   const base = `http://127.0.0.1:${app.address().port}`;
+@@ -286,7 +315,57 @@ test('002 migrates old 001 rows without data loss', async (t) => {
+   await new Promise((done) => app.close(done));
+   assert.equal(bootstrap.status, 200);
+   assert.equal(bootstrap.body.room.id, 'common-room');
+-  assert.equal(bootstrap.body.messages.length, 1);
+-  assert.equal(bootstrap.body.messages[0].body, 'old message');
++  assert.equal(bootstrap.body.room.name, '共同房间');
++  assert.deepEqual(bootstrap.body.messages.map((message) => message.body), ['first old message', 'second old message']);
++
++  // The migration must leave the connection with FK enforcement on; otherwise
++  // a later bad insert would silently create dangling rows.
++  assert.equal(migrated.prepare('PRAGMA foreign_keys').get().foreign_keys, 1);
++  assert.throws(() => {
++    migrated.prepare(
++      "INSERT INTO messages(room_id, member_id, body) VALUES ('missing-room', 'legacy-human', 'bad')",
++    ).run();
++  });
++
++  const firstId = messages[0].id;
++  migrated.prepare(
++    "INSERT INTO messages(room_id, member_id, body, reply_to_id) VALUES ('common-room', 'legacy-human', 'reply after migration', ?)",
++  ).run(firstId);
++  const replyId = Number(migrated.prepare('SELECT last_insert_rowid() AS id').get().id);
++  assert.throws(() => {
++    migrated.prepare(
++      "INSERT INTO messages(room_id, member_id, body, reply_to_id) VALUES ('common-room', 'legacy-human', 'bad reply', 99999)",
++    ).run();
++  });
++
++  const now = new Date().toISOString();
++  migrated.prepare(
++    "INSERT INTO runs(id, room_id, member_id, trigger_message_id, status, reply_message_id, started_at) VALUES ('run-1', 'common-room', 'legacy-human', ?, 'done', ?, ?)",
++  ).run(firstId, replyId, now);
++  const run = migrated.prepare("SELECT trigger_message_id, reply_message_id FROM runs WHERE id = 'run-1'").get();
++  assert.equal(run.trigger_message_id, firstId);
++  assert.equal(run.reply_message_id, replyId);
++  assert.throws(() => {
++    migrated.prepare(
++      "INSERT INTO runs(id, room_id, member_id, trigger_message_id, status, started_at) VALUES ('run-bad', 'common-room', 'legacy-human', 99999, 'running', ?)",
++    ).run(now);
++  });
+   assert.deepEqual(migrated.prepare('PRAGMA foreign_key_check').all(), []);
+ });
++
++test('foreign keys are enforced on a fresh database after migration', async (t) => {
++  const app = await start();
++  t.after(() => app.close());
++
++  assert.equal(app.db.prepare('PRAGMA foreign_keys').get().foreign_keys, 1);
++  assert.throws(() => {
++    app.db.prepare(
++      "INSERT INTO messages(room_id, member_id, body) VALUES ('missing-room', 'human-local', 'bad')",
++    ).run();
++  });
++  assert.throws(() => {
++    app.db.prepare(
++      "INSERT INTO runs(id, room_id, member_id, trigger_message_id, status, started_at) VALUES ('run-bad', 'common-room', 'human-local', 99999, 'running', 'x')",
++    ).run();
++  });
++});

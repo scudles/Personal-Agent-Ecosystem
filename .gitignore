@@ -1,0 +1,18 @@
+# 只装决策与审查记录，不装运行产物
+node_modules/
+dist/
+*.log
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+.data/
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.p12
+token*.txt
+*credentials*
+Thumbs.db
+desktop.ini

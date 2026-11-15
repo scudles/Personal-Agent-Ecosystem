@@ -1,0 +1,39 @@
+﻿path,bytes,category,decision,note
+D:\PAE-POC001\hermes\hermes\home\tools\.staging-fhmxa5vh,460775458,依赖-下载运行时,可清理,可重新下载
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\tools\ffmpeg-9.0.1-win32-x64,448050174,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\ffmpeg-9.0.1-win32-x64,448050174,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\git-2.53.0+3-win32-x64,402500802,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\python-3.14.9+20261021-win32-x64,156710103,依赖-下载运行时,可清理,可重新下载
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\tools\python-3.14.9+20261021-win32-x64,156496358,依赖-下载运行时,可清理,可重新下载
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\tools\node-26.12.1-win32-x64,118132572,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\node-26.12.1-win32-x64,118132572,依赖-下载运行时,可清理,可重新下载
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\tools\.staging-5lgr_n96,110256773,依赖-下载运行时,可清理,可重新下载
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\tools\.staging-a5rb36zi,91660198,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\fetch-b365da794b1d2225eb24d5f5e09ef7792cfd5fa26c3a3586210280c80dff3a2a,58269480,依赖-下载运行时,可清理,可重新下载
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\tools\uv-0.13.5-win32-x64,32591760,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\uv-0.13.5-win32-x64,32591760,依赖-下载运行时,可清理,可重新下载
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\tools\npm-12.0.2-win32-x64,12379869,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\npm-12.0.2-win32-x64,12379869,依赖-下载运行时,可清理,可重新下载
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\tools\ripgrep-15.2.0-win32-x64,4601750,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\ripgrep-15.2.0-win32-x64,4601750,依赖-下载运行时,可清理,可重新下载
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\tools\facts.json,2416,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\facts.json,2416,依赖-下载运行时,可清理,可重新下载
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\tools\.install.lock,0,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\.install.lock,0,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\tools\.staging-mcgl9anb,0,依赖-下载运行时,可清理,可重新下载
+D:\PAE-POC001\hermes\hermes\home\bin,229998,依赖-启动器,可清理,launcher 发布物（hermes.exe / hermes-acp.exe）
+D:\PAE-POC001\hermes\hermes\home\installs,854191834,依赖-虚拟环境,可清理,含 environments/（venv）与 source-completion-pending 标记
+D:\PAE-POC001\hermes\hermes\home\memories,0,空目录,保留,无私人记忆
+D:\PAE-POC001\hermes\hermes\home\sessions,0,空目录,保留,无会话
+D:\PAE-POC001\hermes\hermes\home\cache,311893605,缓存,可清理,uv 缓存
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\state\hermes-npm-cache-9lx5zdtl,3045132,缓存,可清理,npm 包缓存
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\state\node-compile-cache,1446072,缓存,可清理,Node 字节码缓存
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\cache,1153847,缓存,可清理,uv 下载缓存
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\installs,4066790,证据-安装回执,保留,含 facts.json / bootstrap / source-completion-pending 标记
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\home\logs,47690,证据-日志,保留,启动期日志
+D:\PAE-POC001\hermes\hermes\home\logs,4092,证据-日志,保留,agent.log + PM 同步回执（证明依赖装完）
+D:\Personal Agent Ecosystem\poc\POC-001\bridge,7230,证据-脚本,保留,acp-smoke.mjs / gateway-smoke.mjs，一次性握手脚本
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\state\gateway.pid,6,证据-进程元数据,保留,记录的 PoC Gateway PID/端口
+D:\Personal Agent Ecosystem\poc\POC-001\hermes\state\api.port,5,证据-进程元数据,保留,记录的候选 API 端口
+D:\Personal Agent Ecosystem\poc\POC-001\dsh,357591,证据-配置,保留,DSH 专属 home + 四个 profile 配置 + PID 快照
+D:\PAE-POC001\hermes\hermes\home\SOUL.md,667,证据-配置,保留,launcher 自动生成的默认身份文件
